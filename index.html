@@ -352,188 +352,210 @@
             <div class="scroll-hint-wrapper">
                 <p class="scroll-hint"><i class="fas fa-hand-point-right"></i> Desliza para ver más niveles</p>
             </div>
-            <div class="curriculum-wrapper" id="curriculum-grid">
-                <!-- Semester I -->
-                <div class="semester-col">
-                    <div class="sem-header">Nivel I</div>
-                    <div class="subject-card credits-2" id="cat1"
-                        data-desc="Formación ética y valores institucionales.">Cátedra Institucional <span
-                            class="badge">2 Créditos</span></div>
-                    <div class="subject-card credits-2" id="txt1"
-                        data-desc="Desarrollo de habilidades de lectura y escritura académica.">Prod. y Comp. Textual I
-                        <span class="badge">2 Créditos</span>
-                    </div>
-                    <div class="subject-card credits-3" id="adm1" data-desc="Principios básicos de la administración.">
-                        Fund. Administración <span class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="eco1"
-                        data-desc="Introducción a los conceptos económicos fundamentales.">Fund. Economía <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="con1" data-desc="Bases de la contabilidad financiera.">Fund.
-                        Contabilidad <span class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-4" id="mat1" data-desc="Cálculo diferencial de una variable.">
-                        Matemáticas I <span class="badge">4 Créditos</span></div>
-                    <div class="subject-card credits-2" id="ing1">Inglés I <span class="badge">2 Créditos</span></div>
-                    <div class="sem-footer">Total: 19 Créditos</div>
-                </div>
+            <div class="curriculum-container" style="position: relative;">
+                <!-- Desktop Arrows -->
+                <button class="scroll-arrow left" id="scrollLeftBtn" aria-label="Desplazar izquierda"><i
+                        class="fas fa-chevron-left"></i></button>
+                <button class="scroll-arrow right" id="scrollRightBtn" aria-label="Desplazar derecha"><i
+                        class="fas fa-chevron-right"></i></button>
 
-                <!-- Semester II -->
-                <div class="semester-col">
-                    <div class="sem-header">Nivel II</div>
-                    <div class="subject-card credits-2" id="txt2" data-prereqs="txt1"
-                        data-desc="Escritura argumentativa y ensayos.">Prod. y Comp. Textual II <span class="badge">2
-                            Créditos</span></div>
-                    <div class="subject-card credits-2" id="der1">Derecho Constitucional <span class="badge">2
-                            Créditos</span>
+                <div class="curriculum-wrapper" id="curriculum-grid">
+                    <!-- Semester I -->
+                    <div class="semester-col">
+                        <div class="sem-header">Nivel I</div>
+                        <div class="subject-card credits-2" id="cat1"
+                            data-desc="Formación ética y valores institucionales.">Cátedra Institucional <span
+                                class="badge">2 Créditos</span></div>
+                        <div class="subject-card credits-2" id="txt1"
+                            data-desc="Desarrollo de habilidades de lectura y escritura académica.">Prod. y Comp.
+                            Textual I
+                            <span class="badge">2 Créditos</span>
+                        </div>
+                        <div class="subject-card credits-3" id="adm1"
+                            data-desc="Principios básicos de la administración.">
+                            Fund. Administración <span class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="eco1"
+                            data-desc="Introducción a los conceptos económicos fundamentales.">Fund. Economía <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="con1" data-desc="Bases de la contabilidad financiera.">
+                            Fund.
+                            Contabilidad <span class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-4" id="mat1" data-desc="Cálculo diferencial de una variable.">
+                            Matemáticas I <span class="badge">4 Créditos</span></div>
+                        <div class="subject-card credits-2" id="ing1">Inglés I <span class="badge">2 Créditos</span>
+                        </div>
+                        <div class="sem-footer">Total: 19 Créditos</div>
                     </div>
-                    <div class="subject-card credits-3" id="his1" data-desc="Historia económica mundial.">Historia Econ.
-                        General <span class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-2" id="eti1">Ética <span class="badge">2 Créditos</span></div>
-                    <div class="subject-card credits-4" id="mat2" data-prereqs="mat1"
-                        data-desc="Cálculo integral y multivariado.">Matemáticas II <span class="badge">4
-                            Créditos</span>
-                    </div>
-                    <div class="subject-card credits-2" id="ing2" data-prereqs="ing1">Inglés II <span class="badge">2
-                            Créditos</span></div>
-                    <div class="sem-footer">Total: 15 Créditos</div>
-                </div>
 
-                <!-- Semester III -->
-                <div class="semester-col">
-                    <div class="sem-header">Nivel III</div>
-                    <div class="subject-card credits-4" id="mac1" data-prereqs="eco1"
-                        data-desc="Introducción a la macroeconomía.">Macroeconomía I <span class="badge">4
-                            Créditos</span>
+                    <!-- Semester II -->
+                    <div class="semester-col">
+                        <div class="sem-header">Nivel II</div>
+                        <div class="subject-card credits-2" id="txt2" data-prereqs="txt1"
+                            data-desc="Escritura argumentativa y ensayos.">Prod. y Comp. Textual II <span
+                                class="badge">2
+                                Créditos</span></div>
+                        <div class="subject-card credits-2" id="der1">Derecho Constitucional <span class="badge">2
+                                Créditos</span>
+                        </div>
+                        <div class="subject-card credits-3" id="his1" data-desc="Historia económica mundial.">Historia
+                            Econ.
+                            General <span class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-2" id="eti1">Ética <span class="badge">2 Créditos</span></div>
+                        <div class="subject-card credits-4" id="mat2" data-prereqs="mat1"
+                            data-desc="Cálculo integral y multivariado.">Matemáticas II <span class="badge">4
+                                Créditos</span>
+                        </div>
+                        <div class="subject-card credits-2" id="ing2" data-prereqs="ing1">Inglés II <span
+                                class="badge">2
+                                Créditos</span></div>
+                        <div class="sem-footer">Total: 15 Créditos</div>
                     </div>
-                    <div class="subject-card credits-3" id="mic1" data-prereqs="eco1 mat1"
-                        data-desc="Consumidor y productor.">Microeconomía I <span class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="his2" data-prereqs="his1">Hist. Econ. Colombia <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="est1" data-prereqs="mat1"
-                        data-desc="Estadística descriptiva.">Estadística I <span class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="emat" data-prereqs="mat2"
-                        data-desc="Álgebra lineal aplicada.">Econ. Matemática <span class="badge">3 Créditos</span>
-                    </div>
-                    <div class="subject-card credits-2" id="ing3" data-prereqs="ing2">Inglés III <span class="badge">2
-                            Créditos</span></div>
-                    <div class="sem-footer">Total: 18 Créditos</div>
-                </div>
 
-                <!-- Semester IV -->
-                <div class="semester-col">
-                    <div class="sem-header">Nivel IV</div>
-                    <div class="subject-card credits-3" id="inv1" data-prereqs="est1">Fund. Inv. Científica <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-4" id="mac2" data-prereqs="mac1">Macroeconomía II <span
-                            class="badge">4 Créditos</span></div>
-                    <div class="subject-card credits-4" id="mic2" data-prereqs="mic1 emat">Microeconomía II <span
-                            class="badge">4 Créditos</span></div>
-                    <div class="subject-card credits-3" id="epo1" data-prereqs="mac1">Economía Política <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="est2" data-prereqs="est1">Estadística II <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-2" id="dat1" data-prereqs="est1">Analítica de Datos I <span
-                            class="badge">2 Créditos</span></div>
-                    <div class="subject-card credits-2" id="ing4" data-prereqs="ing3">Inglés IV <span class="badge">2
-                            Créditos</span></div>
-                    <div class="sem-footer">Total: 21 Créditos</div>
-                </div>
+                    <!-- Semester III -->
+                    <div class="semester-col">
+                        <div class="sem-header">Nivel III</div>
+                        <div class="subject-card credits-4" id="mac1" data-prereqs="eco1"
+                            data-desc="Introducción a la macroeconomía.">Macroeconomía I <span class="badge">4
+                                Créditos</span>
+                        </div>
+                        <div class="subject-card credits-3" id="mic1" data-prereqs="eco1 mat1"
+                            data-desc="Consumidor y productor.">Microeconomía I <span class="badge">3 Créditos</span>
+                        </div>
+                        <div class="subject-card credits-3" id="his2" data-prereqs="his1">Hist. Econ. Colombia <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="est1" data-prereqs="mat1"
+                            data-desc="Estadística descriptiva.">Estadística I <span class="badge">3 Créditos</span>
+                        </div>
+                        <div class="subject-card credits-3" id="emat" data-prereqs="mat2"
+                            data-desc="Álgebra lineal aplicada.">Econ. Matemática <span class="badge">3 Créditos</span>
+                        </div>
+                        <div class="subject-card credits-2" id="ing3" data-prereqs="ing2">Inglés III <span
+                                class="badge">2
+                                Créditos</span></div>
+                        <div class="sem-footer">Total: 18 Créditos</div>
+                    </div>
 
-                <!-- Semester V -->
-                <div class="semester-col">
-                    <div class="sem-header">Nivel V</div>
-                    <div class="subject-card credits-3" id="inv2" data-prereqs="inv1">Investigación Aplicada <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="mac3" data-prereqs="mac2">Macroeconomía III <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="mic3" data-prereqs="mic2">Microeconomía III <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="med1" data-prereqs="est2">Téc. Medición Econ. <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="fin1" data-prereqs="con1 mat2">Finanzas Privadas I <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="ecom1" data-prereqs="est2 emat">Econometría I <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-2" id="ing5" data-prereqs="ing4">Inglés V <span class="badge">2
-                            Créditos</span></div>
-                    <div class="sem-footer">Total: 20 Créditos</div>
-                </div>
+                    <!-- Semester IV -->
+                    <div class="semester-col">
+                        <div class="sem-header">Nivel IV</div>
+                        <div class="subject-card credits-3" id="inv1" data-prereqs="est1">Fund. Inv. Científica <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-4" id="mac2" data-prereqs="mac1">Macroeconomía II <span
+                                class="badge">4 Créditos</span></div>
+                        <div class="subject-card credits-4" id="mic2" data-prereqs="mic1 emat">Microeconomía II <span
+                                class="badge">4 Créditos</span></div>
+                        <div class="subject-card credits-3" id="epo1" data-prereqs="mac1">Economía Política <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="est2" data-prereqs="est1">Estadística II <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-2" id="dat1" data-prereqs="est1">Analítica de Datos I <span
+                                class="badge">2 Créditos</span></div>
+                        <div class="subject-card credits-2" id="ing4" data-prereqs="ing3">Inglés IV <span
+                                class="badge">2
+                                Créditos</span></div>
+                        <div class="sem-footer">Total: 21 Créditos</div>
+                    </div>
 
-                <!-- Semester VI -->
-                <div class="semester-col">
-                    <div class="sem-header">Nivel VI</div>
-                    <div class="subject-card credits-3" id="reg1" data-prereqs="eco1">Econ. Regional y Local <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="pen1" data-prereqs="his2">Pensamiento Econ. I <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-2" id="dat2" data-prereqs="dat1 ecom1">Analítica de Datos II <span
-                            class="badge">2 Créditos</span></div>
-                    <div class="subject-card credits-3" id="col1" data-prereqs="his2">Economía Colombiana <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="fin2" data-prereqs="fin1">Finanzas Privadas II <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="ecom2" data-prereqs="ecom1">Econometría II <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-2" id="hum1">Form. Humanística I <span class="badge">2
-                            Créditos</span>
+                    <!-- Semester V -->
+                    <div class="semester-col">
+                        <div class="sem-header">Nivel V</div>
+                        <div class="subject-card credits-3" id="inv2" data-prereqs="inv1">Investigación Aplicada <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="mac3" data-prereqs="mac2">Macroeconomía III <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="mic3" data-prereqs="mic2">Microeconomía III <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="med1" data-prereqs="est2">Téc. Medición Econ. <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="fin1" data-prereqs="con1 mat2">Finanzas Privadas I <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="ecom1" data-prereqs="est2 emat">Econometría I <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-2" id="ing5" data-prereqs="ing4">Inglés V <span class="badge">2
+                                Créditos</span></div>
+                        <div class="sem-footer">Total: 20 Créditos</div>
                     </div>
-                    <div class="subject-card credits-2" id="ing6" data-prereqs="ing5">Inglés VI <span class="badge">2
-                            Créditos</span></div>
-                    <div class="sem-footer">Total: 21 Créditos</div>
-                </div>
 
-                <!-- Semester VII -->
-                <div class="semester-col">
-                    <div class="sem-header">Nivel VII</div>
-                    <div class="subject-card credits-3" id="pla1" data-prereqs="reg1">Planificación <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="pen2" data-prereqs="pen1">Pensamiento Econ. II <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="pub1" data-prereqs="mac3">Economía Pública <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="int1" data-prereqs="mac3 mic3">Econ. Internacional <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="pro1" data-prereqs="fin2">Form. y Eval. Proyectos <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="des1" data-prereqs="mac3">Desarrollo Económico <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-2" id="hum2">Form. Humanística II <span class="badge">2
-                            Créditos</span>
+                    <!-- Semester VI -->
+                    <div class="semester-col">
+                        <div class="sem-header">Nivel VI</div>
+                        <div class="subject-card credits-3" id="reg1" data-prereqs="eco1">Econ. Regional y Local <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="pen1" data-prereqs="his2">Pensamiento Econ. I <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-2" id="dat2" data-prereqs="dat1 ecom1">Analítica de Datos II
+                            <span class="badge">2 Créditos</span>
+                        </div>
+                        <div class="subject-card credits-3" id="col1" data-prereqs="his2">Economía Colombiana <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="fin2" data-prereqs="fin1">Finanzas Privadas II <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="ecom2" data-prereqs="ecom1">Econometría II <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-2" id="hum1">Form. Humanística I <span class="badge">2
+                                Créditos</span>
+                        </div>
+                        <div class="subject-card credits-2" id="ing6" data-prereqs="ing5">Inglés VI <span
+                                class="badge">2
+                                Créditos</span></div>
+                        <div class="sem-footer">Total: 21 Créditos</div>
                     </div>
-                    <div class="sem-footer">Total: 20 Créditos</div>
-                </div>
 
-                <!-- Semester VIII -->
-                <div class="semester-col">
-                    <div class="sem-header">Nivel VIII</div>
-                    <div class="subject-card credits-3" id="sem1" data-prereqs="inv2">Seminario de Grado <span
-                            class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-4" id="pol1" data-prereqs="mac3">Política Macroeconómica <span
-                            class="badge">4 Créditos</span></div>
-                    <div class="subject-card credits-3" id="ele1">Electiva I <span class="badge">3 Créditos</span></div>
-                    <div class="subject-card credits-3" id="ele2">Electiva II <span class="badge">3 Créditos</span>
+                    <!-- Semester VII -->
+                    <div class="semester-col">
+                        <div class="sem-header">Nivel VII</div>
+                        <div class="subject-card credits-3" id="pla1" data-prereqs="reg1">Planificación <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="pen2" data-prereqs="pen1">Pensamiento Econ. II <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="pub1" data-prereqs="mac3">Economía Pública <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="int1" data-prereqs="mac3 mic3">Econ. Internacional <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="pro1" data-prereqs="fin2">Form. y Eval. Proyectos <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-3" id="des1" data-prereqs="mac3">Desarrollo Económico <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-2" id="hum2">Form. Humanística II <span class="badge">2
+                                Créditos</span>
+                        </div>
+                        <div class="sem-footer">Total: 20 Créditos</div>
                     </div>
-                    <div class="subject-card credits-3" id="ele3">Electiva III <span class="badge">3 Créditos</span>
-                    </div>
-                    <div class="subject-card credits-2" id="mul1" data-prereqs="ecom2">Análisis Multivariado <span
-                            class="badge">2 Créditos</span></div>
-                    <div class="subject-card credits-2" id="hum3">Form. Humanística III <span class="badge">2
-                            Créditos</span>
-                    </div>
-                    <div class="sem-footer">Total: 20 Créditos</div>
-                </div>
 
-                <!-- Semester IX -->
-                <div class="semester-col">
-                    <div class="sem-header">Nivel IX</div>
-                    <div class="subject-card credits-12 box-highlight" id="pra1" data-prereqs="sem1 pro1">Prácticas
-                        <span class="badge">12 Créditos</span>
+                    <!-- Semester VIII -->
+                    <div class="semester-col">
+                        <div class="sem-header">Nivel VIII</div>
+                        <div class="subject-card credits-3" id="sem1" data-prereqs="inv2">Seminario de Grado <span
+                                class="badge">3 Créditos</span></div>
+                        <div class="subject-card credits-4" id="pol1" data-prereqs="mac3">Política Macroeconómica <span
+                                class="badge">4 Créditos</span></div>
+                        <div class="subject-card credits-3" id="ele1">Electiva I <span class="badge">3 Créditos</span>
+                        </div>
+                        <div class="subject-card credits-3" id="ele2">Electiva II <span class="badge">3 Créditos</span>
+                        </div>
+                        <div class="subject-card credits-3" id="ele3">Electiva III <span class="badge">3 Créditos</span>
+                        </div>
+                        <div class="subject-card credits-2" id="mul1" data-prereqs="ecom2">Análisis Multivariado <span
+                                class="badge">2 Créditos</span></div>
+                        <div class="subject-card credits-2" id="hum3">Form. Humanística III <span class="badge">2
+                                Créditos</span>
+                        </div>
+                        <div class="sem-footer">Total: 20 Créditos</div>
                     </div>
-                    <div class="subject-card credits-2" id="hum4">Form. Humanística IV <span class="badge">2
-                            Créditos</span>
+
+                    <!-- Semester IX -->
+                    <div class="semester-col">
+                        <div class="sem-header">Nivel IX</div>
+                        <div class="subject-card credits-12 box-highlight" id="pra1" data-prereqs="sem1 pro1">Prácticas
+                            <span class="badge">12 Créditos</span>
+                        </div>
+                        <div class="subject-card credits-2" id="hum4">Form. Humanística IV <span class="badge">2
+                                Créditos</span>
+                        </div>
+                        <div class="sem-footer">Total: 14 Créditos</div>
                     </div>
-                    <div class="sem-footer">Total: 14 Créditos</div>
                 </div>
-            </div>
+            </div> <!-- End curriculum-container -->
 
             <!-- Subject Details Modal -->
             <div id="subject-modal" class="modal-overlay">

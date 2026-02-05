@@ -1199,9 +1199,46 @@ footer {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* Utilities */
-.text-gold {
-    color: var(--gold) !important;
+/* --- Desktop Support --- */
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-arrow:hover {
+    background: var(--primary-color);
+    color: var(--gold);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.scroll-arrow.left {
+    left: 20px;
+}
+
+.scroll-arrow.right {
+    right: 20px;
+}
+
+@media (max-width: 768px) {
+    .scroll-arrow {
+        display: none !important;
+        /* Hide arrows on mobile */
+    }
 }
 
 .text-primary {

@@ -330,6 +330,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 8. Desktop Curriculum Scroll ---
+    const scrollLeftBtn = document.getElementById('scrollLeftBtn');
+    const scrollRightBtn = document.getElementById('scrollRightBtn');
+    const curriculumGrid = document.getElementById('curriculum-grid');
+
+    if (scrollLeftBtn && scrollRightBtn && curriculumGrid) {
+        scrollLeftBtn.addEventListener('click', () => {
+            curriculumGrid.scrollBy({ left: -400, behavior: 'smooth' });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            curriculumGrid.scrollBy({ left: 400, behavior: 'smooth' });
+        });
+    }
+
     // Init Data Fetch (Restored)
     fetchEconomicIndicators();
 
