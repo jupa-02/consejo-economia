@@ -137,6 +137,13 @@ ul {
     color: var(--primary-color);
 }
 
+#toggle-selection-mode {
+    position: relative;
+    z-index: 1500;
+    /* Ensure above scroll hints */
+    cursor: pointer;
+}
+
 /* --- Dynamic Calendar Section --- */
 .calendar-dashboard {
     display: flex;
