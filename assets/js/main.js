@@ -556,13 +556,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const countdownContainer = document.getElementById('calendar-countdown');
     const nextEventLabel = document.getElementById('next-event-name');
 
-    // Calendar Data (Placeholders - To be updated by User)
+    // Calendar Data (Updated with Official 2026-1 Dates)
     const academicEvents = [
-        { title: "Matrícula Financiera", date: "2026-01-20", icon: "fa-money-bill-wave" },
-        { title: "Inicio de Clases", date: "2026-02-05", icon: "fa-chalkboard-teacher" },
-        { title: "Límite Cancelación", date: "2026-04-15", icon: "fa-ban" },
-        { title: "Exámenes Finales", date: "2026-05-20", icon: "fa-file-signature" },
-        { title: "Finalización Clases", date: "2026-05-30", icon: "fa-flag-checkered" }
+        { title: "Límite Matrícula Ordinaria", date: "2026-02-11", icon: "fa-money-bill-wave" },
+        { title: "Inicio de Clases", date: "2026-02-16", icon: "fa-chalkboard-teacher" },
+        { title: "Parciales 1er Corte", date: "2026-03-24", icon: "fa-edit" },
+        { title: "Supletorios 1er Corte", date: "2026-04-13", icon: "fa-user-clock" },
+        { title: "Parciales 2do Corte", date: "2026-05-04", icon: "fa-file-alt" },
+        { title: "Supletorios 2do Corte", date: "2026-05-18", icon: "fa-history" },
+        { title: "Cierre Planilla May", date: "2026-05-25", icon: "fa-save" }
     ];
 
     if (timelineTrack && countdownContainer) {
