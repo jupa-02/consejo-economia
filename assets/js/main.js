@@ -379,6 +379,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const formClose = document.getElementById('close-prematricula');
     const form = document.getElementById('prematricula-form');
 
+    const toast = document.getElementById('selection-toast');
+
     // 10.1 Toggle Selection Mode
     if (toggleModeBtn) {
         toggleModeBtn.addEventListener('click', () => {
@@ -387,14 +389,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (selectionMode) {
                 toggleModeBtn.innerHTML = '<i class="fas fa-check-square"></i> Finalizar Selección';
-                document.body.classList.add('selection-active'); // Helper class
-                // Disable modal triggering
+                document.body.classList.add('selection-active');
+
+                // Show toast
+                if (toast) {
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 4000);
+                }
             } else {
                 toggleModeBtn.innerHTML = '<i class="far fa-square-check"></i> Generar Prematrícula';
                 document.body.classList.remove('selection-active');
                 floatingBar.classList.remove('visible');
                 selectedSubjects.clear();
                 updateSelectionVisuals();
+                if (toast) toast.classList.remove('show');
             }
         });
     }

@@ -142,6 +142,66 @@ ul {
     z-index: 1500;
     /* Ensure above scroll hints */
     cursor: pointer;
+    transition: all 0.3s;
+}
+
+#toggle-selection-mode.active {
+    background: var(--gold);
+    color: var(--primary-color);
+    font-weight: 800;
+    border-color: var(--gold);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Selection Mode Visuals */
+body.selection-active .subject-card {
+    border: 2px dashed #ccc;
+    /* Visual cue: 'Fill me' */
+    transform: scale(0.98);
+    opacity: 0.7;
+    filter: grayscale(0.6);
+}
+
+body.selection-active .subject-card:hover {
+    border-color: var(--gold);
+    opacity: 1;
+    transform: scale(1.02);
+    filter: grayscale(0);
+    cursor: pointer;
+}
+
+body.selection-active .subject-card.selected {
+    border: 2px solid #51cf66 !important;
+    /* Solid green override */
+    background-color: #f0fff4 !important;
+    opacity: 1;
+    filter: none;
+    transform: scale(1);
+    box-shadow: 0 5px 15px rgba(81, 207, 102, 0.3);
+}
+
+/* Toast Notification */
+.toast-notification {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+    pointer-events: none;
+}
+
+.toast-notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
 }
 
 /* --- Dynamic Calendar Section --- */
