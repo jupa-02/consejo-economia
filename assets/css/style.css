@@ -655,6 +655,10 @@ ul {
     scrollbar-color: var(--gold) #e0e0e0;
 }
 
+.scroll-hint-wrapper {
+    display: none;
+}
+
 .curriculum-wrapper::-webkit-scrollbar {
     height: 10px;
 }
@@ -1116,6 +1120,34 @@ footer {
     .curriculum-wrapper {
         padding: 1rem;
         gap: 1rem;
+    }
+
+    .scroll-hint-wrapper {
+        display: block;
+        /* Show only on mobile */
+        text-align: right;
+        margin-bottom: 0.5rem;
+        padding-right: 1rem;
+    }
+
+    .scroll-hint {
+        display: inline-block;
+        font-size: 0.9rem;
+        color: var(--gold);
+        font-weight: 600;
+        animation: bounceRight 1.5s infinite;
+    }
+
+    @keyframes bounceRight {
+
+        0%,
+        100% {
+            transform: translateX(0);
+        }
+
+        50% {
+            transform: translateX(5px);
+        }
     }
 
     .semester-col {
