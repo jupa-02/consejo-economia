@@ -551,6 +551,75 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleModeBtn.click(); // Reset UI
     }
 
+    // --- 11. Dynamic Calendar Logic ---
+    const timelineTrack = document.getElementById('timeline-track');
+    const countdownContainer = document.getElementById('calendar-countdown');
+    const nextEventLabel = document.getElementById('next-event-name');
+
+    // Calendar Data (Placeholders - To be updated by User)
+    const academicEvents = [
+        { title: "Matrícula Financiera", date: "2026-01-20", icon: "fa-money-bill-wave" },
+        { title: "Inicio de Clases", date: "2026-02-05", icon: "fa-chalkboard-teacher" },
+        { title: "Límite Cancelación", date: "2026-04-15", icon: "fa-ban" },
+        { title: "Exámenes Finales", date: "2026-05-20", icon: "fa-file-signature" },
+        { title: "Finalización Clases", date: "2026-05-30", icon: "fa-flag-checkered" }
+    ];
+
+    if (timelineTrack && countdownContainer) {
+        let nextEvent = null;
+        const today = new Date(); // Use real date
+
+        // 11.1 Render Timeline
+        timelineTrack.innerHTML = '';
+        academicEvents.sort((a, b) => new Date(a.date) - new Date(b.date)); // Sort by date
+
+        academicEvents.forEach(evt => {
+            const evtDate = new Date(evt.date);
+            const isPast = evtDate < today;
+
+            // Determine Next Event
+            if (!nextEvent && !isPast) {
+                nextEvent = evt;
+            }
+
+            const item = document.createElement('div');
+            item.className = `timeline-item ${!isPast && evt === nextEvent ? 'active-event' : ''}`;
+            item.innerHTML = `
+                <span class="timeline-date">${evtDate.toLocaleDateString('es-CO', { day: 'numeric', month: 'short' })}</span>
+                <span class="timeline-title">${evt.title}</span>
+            `;
+            timelineTrack.appendChild(item);
+        });
+
+        // 11.2 Start Countdown
+        if (nextEvent) {
+            nextEventLabel.textContent = `Para: ${nextEvent.title}`;
+            updateCountdown(nextEvent.date);
+            setInterval(() => updateCountdown(nextEvent.date), 1000 * 60); // Update every minute
+        } else {
+            nextEventLabel.textContent = "Semestre Finalizado";
+            countdownContainer.innerHTML = "00 <span style='font-size:1rem'>días</span>";
+        }
+    }
+
+    function updateCountdown(targetDateStr) {
+        const target = new Date(targetDateStr).getTime();
+        const now = new Date().getTime();
+        const diff = target - now;
+
+        if (diff < 0) {
+            countdownContainer.innerHTML = "00 d 00 h";
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+        countdownContainer.innerHTML = `
+            <span class="days">${days}</span> días <span class="hours">${hours}</span> hrs
+        `;
+    }
+
     // Init Data Fetch (Restored)
     fetchEconomicIndicators();
 

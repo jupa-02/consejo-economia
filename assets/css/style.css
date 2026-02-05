@@ -137,6 +137,149 @@ ul {
     color: var(--primary-color);
 }
 
+/* --- Dynamic Calendar Section --- */
+.calendar-dashboard {
+    display: flex;
+    gap: 2rem;
+    align-items: stretch;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.calendar-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.calendar-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.highlight-card {
+    background: var(--primary-color);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--gold);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.countdown-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    font-family: 'Playfair Display', serif;
+    background: -webkit-linear-gradient(45deg, #fff, #ddd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.event-label {
+    font-size: 1.1rem;
+    color: var(--gold);
+    font-weight: 500;
+}
+
+/* Timeline */
+.timeline-container {
+    flex: 2;
+    min-width: 300px;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+}
+
+.timeline-track {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem;
+    min-width: 100%;
+}
+
+.timeline-item {
+    min-width: 160px;
+    padding: 1rem;
+    background: var(--bg-offset);
+    border-radius: 12px;
+    border-left: 4px solid var(--text-gray);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.timeline-item:hover {
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+    transform: scale(1.05);
+}
+
+.timeline-item.active-event {
+    border-left-color: var(--gold);
+    background: #fffbef;
+}
+
+.timeline-date {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.timeline-title {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+    .calendar-dashboard {
+        flex-direction: column;
+    }
+
+    .timeline-container {
+        overflow-x: scroll;
+    }
+}
+
 .btn-outline {
     background: transparent;
     border: 2px solid var(--primary-color);

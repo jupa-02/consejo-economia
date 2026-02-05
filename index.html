@@ -173,6 +173,41 @@
         </div>
     </section>
 
+    <!-- Section: Academic Calendar (Dynamic) -->
+    <section id="calendario" class="section" style="background: var(--bg-offset); padding: 3rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Calendario Académico 2026-1</h2>
+                <div class="line"></div>
+                <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto; font-size: 0.95rem;">
+                    Fechas clave para no perderse nada. <a
+                        href="resources/CALENDARIO ACADEMICO PRESENCIALES C.F. 2026.pdf" target="_blank"
+                        style="color: var(--primary-color); font-weight: 600; text-decoration: underline;">Ver PDF
+                        Oficial</a>
+                </p>
+            </div>
+
+            <div class="calendar-dashboard">
+                <!-- Countdown Card -->
+                <div class="calendar-card highlight-card">
+                    <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
+                    <h3>Próximo Evento</h3>
+                    <div class="countdown-display" id="calendar-countdown">
+                        <span class="days">00</span> días <span class="hours">00</span> hrs
+                    </div>
+                    <p id="next-event-name" class="event-label">Cargando fechas...</p>
+                </div>
+
+                <!-- Timeline Scroll -->
+                <div class="timeline-container">
+                    <div class="timeline-track" id="timeline-track">
+                        <!-- Items injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Section: Main Services Grid -->
     <section id="servicios" class="section services-section">
         <div class="container">
