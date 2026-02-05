@@ -564,7 +564,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: "Supletorios 1er Corte", date: "2026-04-13", icon: "fa-user-clock" },
         { title: "Parciales 2do Corte", date: "2026-05-04", icon: "fa-file-alt" },
         { title: "Supletorios 2do Corte", date: "2026-05-18", icon: "fa-history" },
-        { title: "Cierre Planilla May", date: "2026-05-25", icon: "fa-save" }
+        { title: "Parciales Finales", date: "2026-06-16", icon: "fa-flag-checkered" },
+        { title: "Supletorios Finales", date: "2026-06-29", icon: "fa-user-clock" },
+        { title: "Habilitaciones", date: "2026-07-07", icon: "fa-skull-crossbones" },
+        { title: "Cierre Semestre", date: "2026-07-15", icon: "fa-door-closed" }
     ];
 
     if (timelineTrack && countdownContainer) {
