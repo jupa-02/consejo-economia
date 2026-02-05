@@ -345,8 +345,11 @@
         <div class="container-fluid">
             <div class="section-header">
                 <h2>Malla Curricular</h2>
-
                 <div class="line"></div>
+                <button id="toggle-selection-mode" class="btn btn-outline"
+                    style="margin-top: 1rem; border-radius: 50px; font-size: 0.9rem;">
+                    <i class="far fa-square-check"></i> Generar Prematrícula
+                </button>
             </div>
 
             <div class="scroll-hint-wrapper">
@@ -662,11 +665,49 @@
         </div>
     </footer>
 
+    <!-- Prematricula Floating Bar -->
+    <div id="prematricula-bar" class="floating-bar">
+        <span id="selected-count">0 materias seleccionadas</span>
+        <button id="btn-open-form" class="btn btn-sm">Generar Formato</button>
+    </div>
+
+    <!-- Prematricula Data Form Modal -->
+    <div id="prematricula-modal" class="modal-overlay">
+        <div class="modal-content-card" style="max-width: 500px;">
+            <button class="close-modal" id="close-prematricula">&times;</button>
+            <h3>Datos del Estudiante</h3>
+            <p style="font-size: 0.9rem; color: var(--text-gray); margin-bottom: 1.5rem;">Estos datos se pondrán en el
+                Excel automáticamente.</p>
+
+            <form id="prematricula-form">
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label>Apellidos</label>
+                    <input type="text" id="pm-apellidos" class="form-control" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label>Nombres</label>
+                    <input type="text" id="pm-nombres" class="form-control" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label>Código Estudiantil</label>
+                    <input type="text" id="pm-codigo" class="form-control" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label>Celular</label>
+                    <input type="tel" id="pm-celular" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-full">Descargar Excel (.xlsx)</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Scroll to Top Button -->
     <button id="scrollToTop" class="scroll-top-btn" aria-label="Volver arriba">
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- SheetJS for Excel Export -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 

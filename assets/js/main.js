@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cards.forEach(card => {
             card.addEventListener('click', () => {
+                if (selectionMode) return; // Prevent modal if selecting for Excel
+
                 const subjectId = card.id;
                 const prereqs = card.dataset.prereqs ? card.dataset.prereqs.split(' ') : [];
                 const description = card.dataset.desc || "Información del plan de estudios.";
@@ -364,6 +366,189 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 2000);
             });
         });
+    }
+
+    // --- 10. Prematricula Generator ---
+    let selectionMode = false;
+    const selectedSubjects = new Set();
+    const toggleModeBtn = document.getElementById('toggle-selection-mode');
+    const floatingBar = document.getElementById('prematricula-bar');
+    const selectedCountSpan = document.getElementById('selected-count');
+    const openFormBtn = document.getElementById('btn-open-form');
+    const formModal = document.getElementById('prematricula-modal');
+    const formClose = document.getElementById('close-prematricula');
+    const form = document.getElementById('prematricula-form');
+
+    // 10.1 Toggle Selection Mode
+    if (toggleModeBtn) {
+        toggleModeBtn.addEventListener('click', () => {
+            selectionMode = !selectionMode;
+            toggleModeBtn.classList.toggle('active');
+
+            if (selectionMode) {
+                toggleModeBtn.innerHTML = '<i class="fas fa-check-square"></i> Finalizar Selección';
+                document.body.classList.add('selection-active'); // Helper class
+                // Disable modal triggering
+            } else {
+                toggleModeBtn.innerHTML = '<i class="far fa-square-check"></i> Generar Prematrícula';
+                document.body.classList.remove('selection-active');
+                floatingBar.classList.remove('visible');
+                selectedSubjects.clear();
+                updateSelectionVisuals();
+            }
+        });
+    }
+
+    // 10.2 Selection Logic (Intercepting Clicks)
+    // We modify the existing Subject Card click listener logic by checking selectionMode
+    // *IMPORTANT*: This logic needs to be integrated into the existing listener (Section 5.3 in code roughly)
+    // For now, let's attach a specific listener that handles it if mode is active.
+
+    // We need to re-select cards because they are static
+    const allCards = document.querySelectorAll('.subject-card');
+
+    allCards.forEach(card => {
+        // Remove existing listener to avoid conflict? No, let's just handle it.
+        // We will assume the modal opening logic checks for a flag or we preventDefault.
+
+        card.addEventListener('click', (e) => {
+            if (!selectionMode) return; // Normal modal behavior, controlled elsewhere
+
+            e.stopPropagation(); // Stop modal from opening
+
+            const id = card.id;
+            const name = card.childNodes[0].nodeValue.trim(); // Text node
+            const creditsMatch = card.querySelector('.badge').textContent.match(/\d+/);
+            const credits = creditsMatch ? creditsMatch[0] : '0';
+            const code = card.querySelector('.badge-outline') ? card.querySelector('.badge-outline').textContent : '---';
+
+            // Toggle
+            if (selectedSubjects.has(id)) {
+                selectedSubjects.delete(id);
+                card.classList.remove('selected');
+            } else {
+                selectedSubjects.add(id);
+                // Store data in DOM or object map? We can reconstruct from ID/DOM content
+                card.dataset.selName = name;
+                card.dataset.selCode = code;
+                card.dataset.selCredits = credits;
+
+                card.classList.add('selected');
+            }
+
+            updateFloatingBar();
+        }, true); // Capture phase to beat the modal listener? Or just put check in modal listener.
+    });
+
+    // Better Approach: Modify the existing listener at line ~90. 
+    // Since I can't easily rewrite that whole block, I will use capture phase here to stop propagation if mode is active.
+
+    function updateFloatingBar() {
+        if (selectedSubjects.size > 0) {
+            floatingBar.classList.add('visible');
+            selectedCountSpan.textContent = `${selectedSubjects.size} materias seleccionadas`;
+        } else {
+            floatingBar.classList.remove('visible');
+        }
+    }
+
+    function updateSelectionVisuals() {
+        allCards.forEach(c => c.classList.remove('selected'));
+    }
+
+    // 10.3 Form Handling
+    if (openFormBtn) {
+        openFormBtn.addEventListener('click', () => {
+            formModal.style.display = 'flex';
+        });
+    }
+
+    if (formClose) {
+        formClose.addEventListener('click', () => {
+            formModal.style.display = 'none';
+        });
+    }
+
+    // 10.4 Excel Generation
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const apellido = document.getElementById('pm-apellidos').value.toUpperCase();
+            const nombre = document.getElementById('pm-nombres').value.toUpperCase();
+            const codigo = document.getElementById('pm-codigo').value;
+            const celular = document.getElementById('pm-celular').value;
+
+            generateExcel({ apellido, nombre, codigo, celular });
+            formModal.style.display = 'none';
+        });
+    }
+
+    function generateExcel(user) {
+        // Create Data Structure
+        // According to Image:
+        // C3: Apellidos
+        // C4: Nombres
+        // C5: Codigo
+        // C6: Celular (Assuming, image showed row 6 for phone)
+
+        // Rows start at index 0. So Row 1 is 0.
+        // C3 is cell {c:2, r:2}
+
+        const wb = XLSX.utils.book_new();
+        const ws_name = "Prematricula 2026";
+
+        // Base Data
+        const ws_data = [
+            ["", "", "FORMATO DE PREMATRÍCULA ACADÉMICA"], // Row 1
+            ["", "", "PROGRAMA DE ECONOMÍA", "", "", "PERÍODO ACADÉMICO: 2026-01"], // Row 2
+            ["", "APELLIDOS:", user.apellido], // Row 3
+            ["", "NOMBRE(S):", user.nombre], // Row 4
+            ["", "CODIGO:", user.codigo], // Row 5
+            ["", "CELULAR:", user.celular], // Row 6
+            [], // Row 7 (Empty spacer or part of header context)
+            ["", "No.", "ASIGNATURAS Y CURSOS LIBRES", "CODIGO", "GRUPO", "CREDITOS"] // Row 8 (Headers)
+        ];
+
+        // Add Subjects
+        let counter = 1;
+        selectedSubjects.forEach(id => {
+            const card = document.getElementById(id);
+            const name = card.dataset.selName;
+            const code = card.dataset.selCode;
+            const creds = card.dataset.selCredits;
+
+            ws_data.push(["", counter, name, code, "", parseInt(creds)]);
+            counter++;
+        });
+
+        // Create Sheet
+        const ws = XLSX.utils.aoa_to_sheet(ws_data);
+
+        // Merges (Styling layout per image)
+        ws['!merges'] = [
+            { s: { r: 0, c: 2 }, e: { r: 0, c: 5 } }, // Title
+            { s: { r: 1, c: 2 }, e: { r: 1, c: 4 } }, // Program Name
+            { s: { r: 2, c: 2 }, e: { r: 2, c: 5 } }, // Apellidos input wide
+            { s: { r: 3, c: 2 }, e: { r: 3, c: 5 } }  // Nombres input wide
+        ];
+
+        // Column Widths
+        ws['!cols'] = [
+            { wch: 2 }, // A (margin)
+            { wch: 15 }, // B (Labels/No)
+            { wch: 40 }, // C (Asignaturas)
+            { wch: 10 }, // D (Codigo)
+            { wch: 10 }, // E (Grupo)
+            { wch: 10 }  // F (Creditos)
+        ];
+
+        XLSX.utils.book_append_sheet(wb, ws, ws_name);
+        XLSX.writeFile(wb, `Prematricula_${user.apellido}_2026.xlsx`);
+
+        // Reset
+        selectionMode = false;
+        toggleModeBtn.click(); // Reset UI
     }
 
     // Init Data Fetch (Restored)
