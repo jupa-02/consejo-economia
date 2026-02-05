@@ -270,9 +270,33 @@ body.selection-active .subject-card.selected {
     font-weight: 700;
     margin: 0.5rem 0;
     font-family: 'Playfair Display', serif;
+    color: var(--white);
+    /* Fallback */
     background: -webkit-linear-gradient(45deg, #fff, #ddd);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* Mobile Tweak for Countdown */
+@media (max-width: 768px) {
+    .highlight-card {
+        min-height: auto;
+        padding: 1.5rem;
+    }
+
+    .countdown-display {
+        font-size: 2rem;
+        /* Ensure text is visible even if gradient fails on some mobile browsers */
+        background: none;
+        -webkit-text-fill-color: initial;
+        color: var(--white);
+    }
+
+    .card-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
 }
 
 .event-label {
