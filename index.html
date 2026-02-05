@@ -231,7 +231,7 @@
                             style="display: block; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary-color);">🏆
                             Nota Objetivo (¿Cuánto quieres sacar?)</label>
                         <input type="number" id="note-target" class="form-control" placeholder="Ej: 3.0, 4.0, 4.5"
-                            value="3.0" step="0.1" min="0" max="5"
+                            value="3.0" step="0.1" min="0" max="5" inputmode="decimal"
                             style="width: 100%; padding: 10px; border: 1px solid var(--primary-color); border-radius: 8px; font-weight: bold; text-align: center;">
                     </div>
 
@@ -241,7 +241,7 @@
                             style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary-color);">Primer
                             Corte (30%)</label>
                         <input type="number" id="note-c1" class="form-control" placeholder="0.0 - 5.0" step="0.1"
-                            min="0" max="5"
+                            min="0" max="5" inputmode="decimal"
                             style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
                     </div>
 
@@ -251,7 +251,7 @@
                             style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary-color);">Segundo
                             Corte (30%)</label>
                         <input type="number" id="note-c2" class="form-control" placeholder="0.0 - 5.0" step="0.1"
-                            min="0" max="5"
+                            min="0" max="5" inputmode="decimal"
                             style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
                     </div>
 
@@ -262,6 +262,7 @@
                             Corte (40%)</label>
                         <input type="number" id="note-c3" class="form-control"
                             placeholder="Nota Final (Dejar vacío para calcular)" step="0.1" min="0" max="5"
+                            inputmode="decimal"
                             style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
                     </div>
 
@@ -634,6 +635,11 @@
             </p>
         </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-top-btn" aria-label="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="assets/js/main.js"></script>
 </body>

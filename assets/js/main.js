@@ -310,6 +310,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 7. Scroll to Top Logic ---
+    const scrollBtn = document.getElementById('scrollToTop');
+
+    if (scrollBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
     // Init Data Fetch (Restored)
     fetchEconomicIndicators();
 
