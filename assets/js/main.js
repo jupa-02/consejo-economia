@@ -345,6 +345,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 9. Copy Code Feature ---
+    const copyBtn = document.getElementById('copy-code-btn');
+    const codeBadge = document.getElementById('modal-code');
+
+    if (copyBtn && codeBadge) {
+        copyBtn.addEventListener('click', () => {
+            const code = codeBadge.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                // Feedback
+                const originalIcon = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                copyBtn.classList.add('copied');
+
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="far fa-copy"></i>';
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            });
+        });
+    }
+
     // Init Data Fetch (Restored)
     fetchEconomicIndicators();
 
