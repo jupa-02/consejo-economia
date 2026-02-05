@@ -1635,6 +1635,9 @@ footer {
     width: 90%;
     max-width: 500px;
     justify-content: space-between;
+
+    /* FIX: Hide completely by default on all screens */
+    transform: translateX(-50%) translateY(200px);
 }
 
 .floating-bar.visible {
