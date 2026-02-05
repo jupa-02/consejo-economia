@@ -280,17 +280,52 @@ body.selection-active .subject-card.selected {
 
 /* Mobile Tweak for Countdown */
 @media (max-width: 768px) {
+
+    /* Timeline Mobile Fixes */
+    .timeline-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scroll on iOS */
+        padding-bottom: 1rem;
+        /* Hide scrollbar but keep functionality */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .timeline-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .timeline-track {
+        display: flex;
+        gap: 1.5rem;
+        padding: 0.5rem;
+        width: max-content;
+        /* Allow track to be as long as needed */
+        margin: 0;
+        /* Remove auto margins that center it */
+    }
+
+    .timeline-item {
+        min-width: 220px;
+        /* Smaller cards for mobile */
+        flex: 0 0 auto;
+        /* Don't shrink */
+    }
+
     .calendar-dashboard {
+        width: 100%;
+        overflow: hidden;
+        /* Prevent dashboard itself from overflowing */
         flex-direction: column;
         gap: 1rem;
     }
 
     .calendar-card {
         min-width: auto;
-        /* Allow shrinking */
         width: 100%;
         padding: 1.5rem;
-        /* Reduced padding */
     }
 
     .highlight-card {
