@@ -585,17 +585,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextEventLabel = document.getElementById('next-event-name');
 
     // Calendar Data (Updated with Official 2026-1 Dates)
+    // NOTE: Added T12:00:00 to prevent Timezone shift (UTC -> Local) showing previous day
     const academicEvents = [
-        { title: "Límite Matrícula Ordinaria", date: "2026-02-11", icon: "fa-money-bill-wave" },
-        { title: "Inicio de Clases", date: "2026-02-16", icon: "fa-chalkboard-teacher" },
-        { title: "Parciales 1er Corte", date: "2026-03-24", icon: "fa-edit" },
-        { title: "Supletorios 1er Corte", date: "2026-04-13", icon: "fa-user-clock" },
-        { title: "Parciales 2do Corte", date: "2026-05-04", icon: "fa-file-alt" },
-        { title: "Supletorios 2do Corte", date: "2026-05-18", icon: "fa-history" },
-        { title: "Parciales Finales", date: "2026-06-16", icon: "fa-flag-checkered" },
-        { title: "Supletorios Finales", date: "2026-06-29", icon: "fa-user-clock" },
-        { title: "Habilitaciones", date: "2026-07-07", icon: "fa-skull-crossbones" },
-        { title: "Cierre Semestre", date: "2026-07-15", icon: "fa-door-closed" }
+        { title: "Límite Matrícula Ordinaria", date: "2026-02-11T12:00:00", icon: "fa-money-bill-wave" },
+        { title: "Inicio de Clases", date: "2026-02-16T12:00:00", icon: "fa-chalkboard-teacher" },
+        { title: "Parciales 1er Corte", date: "2026-03-24T12:00:00", icon: "fa-edit" },
+        { title: "Supletorios 1er Corte", date: "2026-04-13T12:00:00", icon: "fa-user-clock" },
+        { title: "Parciales 2do Corte", date: "2026-05-04T12:00:00", icon: "fa-file-alt" },
+        { title: "Supletorios 2do Corte", date: "2026-05-18T12:00:00", icon: "fa-history" },
+        { title: "Parciales Finales", date: "2026-06-16T12:00:00", icon: "fa-flag-checkered" },
+        { title: "Supletorios Finales", date: "2026-06-29T12:00:00", icon: "fa-user-clock" },
+        { title: "Habilitaciones", date: "2026-07-07T12:00:00", icon: "fa-skull-crossbones" },
+        { title: "Cierre Semestre", date: "2026-07-15T12:00:00", icon: "fa-door-closed" }
     ];
 
     if (timelineTrack && countdownContainer) {
