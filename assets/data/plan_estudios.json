@@ -1,0 +1,800 @@
+{
+  "plans": [
+    {
+      "name": "﻿PLAN DE ESTUDIOS 2016 - 2023-1",
+      "semesters": [
+        {
+          "name": "Primer semestre",
+          "subjects": [
+            {
+              "name": "Catedra Institucional",
+              "credits": "2",
+              "professor": "Claudia Cifuentes",
+              "prerequisites": ""
+            },
+            {
+              "name": "Compresión y producción de textos",
+              "credits": "2",
+              "professor": "Tania Lambraño",
+              "prerequisites": ""
+            },
+            {
+              "name": "Instroducción a la economía",
+              "credits": "3",
+              "professor": "Efraín Cuadro",
+              "prerequisites": ""
+            },
+            {
+              "name": "Introducción a la administración",
+              "credits": "3",
+              "professor": "Rafaela Posso",
+              "prerequisites": ""
+            },
+            {
+              "name": "Estadistica I",
+              "credits": "3",
+              "professor": "Gustavo García",
+              "prerequisites": ""
+            },
+            {
+              "name": "Matematicas I",
+              "credits": "4",
+              "professor": "Tiberio Wilches",
+              "prerequisites": ""
+            },
+            {
+              "name": "Curso libre",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": ""
+            }
+          ]
+        },
+        {
+          "name": "Segundo semestre",
+          "subjects": [
+            {
+              "name": "Humanidades I",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": ""
+            },
+            {
+              "name": "Compresión y producción de textos II",
+              "credits": "2",
+              "professor": "José Gutierrez",
+              "prerequisites": "Compresión y producción de textos"
+            },
+            {
+              "name": "Derecho constitucional",
+              "credits": "2",
+              "professor": "María Herrezo",
+              "prerequisites": ""
+            },
+            {
+              "name": "Economía politíca",
+              "credits": "3",
+              "professor": "Dewin Perez",
+              "prerequisites": "Instroducción a la economía"
+            },
+            {
+              "name": "Estadistica II",
+              "credits": "3",
+              "professor": "Gustavo García",
+              "prerequisites": "Estadistica I"
+            },
+            {
+              "name": "Matematicas II",
+              "credits": "4",
+              "professor": "Alcibaldo Miranda",
+              "prerequisites": "Matematicas I"
+            },
+            {
+              "name": "Curso libre",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": ""
+            }
+          ]
+        },
+        {
+          "name": "Tercer semestre",
+          "subjects": [
+            {
+              "name": "Humanidades II",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": "Humanidades I"
+            },
+            {
+              "name": "Etica y valores",
+              "credits": "2",
+              "professor": "Vanessa Niño",
+              "prerequisites": ""
+            },
+            {
+              "name": "Microeconomía I",
+              "credits": "4",
+              "professor": "Robienson Castro",
+              "prerequisites": "Economía politíca"
+            },
+            {
+              "name": "Historia economíca",
+              "credits": "3",
+              "professor": "Claudia Cifuentes",
+              "prerequisites": "Economía politíca"
+            },
+            {
+              "name": "Introducción a la contabilidad",
+              "credits": "3",
+              "professor": "Juan Perez",
+              "prerequisites": ""
+            },
+            {
+              "name": "Matematicas III",
+              "credits": "4",
+              "professor": "Alcibaldo Miranda",
+              "prerequisites": "Matematicas II"
+            },
+            {
+              "name": "Curso libre",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": ""
+            }
+          ]
+        },
+        {
+          "name": "Cuarto semestre",
+          "subjects": [
+            {
+              "name": "Fundamentos de la investigación",
+              "credits": "3",
+              "professor": "Nelson Alvis",
+              "prerequisites": "Estadistica II"
+            },
+            {
+              "name": "Microeconomía II",
+              "credits": "4",
+              "professor": "Robinson Castro",
+              "prerequisites": "Microeconomía I"
+            },
+            {
+              "name": "Macroeconomia I",
+              "credits": "4",
+              "professor": "Efraín Cuadro",
+              "prerequisites": "Microeconomía I"
+            },
+            {
+              "name": "Economía colombiana",
+              "credits": "3",
+              "professor": "Claudia Cifuentes",
+              "prerequisites": "Historia economíca"
+            },
+            {
+              "name": "Tecnicas de medición",
+              "credits": "3",
+              "professor": "Dennis Marrugo",
+              "prerequisites": "Estadistica II"
+            },
+            {
+              "name": "Economía matematica",
+              "credits": "3",
+              "professor": "Jose Marrugo",
+              "prerequisites": "Matematicas III"
+            }
+          ]
+        },
+        {
+          "name": "Quinto semestre",
+          "subjects": [
+            {
+              "name": "Investigación aplicada",
+              "credits": "3",
+              "professor": "Libardo Canabal",
+              "prerequisites": "Fundamentos de la investigación"
+            },
+            {
+              "name": "Microeconomía III",
+              "credits": "4",
+              "professor": "Amaury Ji menez",
+              "prerequisites": ""
+            },
+            {
+              "name": "Macroeconomía II",
+              "credits": "4",
+              "professor": "Dewin Fuentes",
+              "prerequisites": "Macroeconomia I"
+            },
+            {
+              "name": "Pensamiento economico",
+              "credits": "3",
+              "professor": "Alvaro Escobar",
+              "prerequisites": "Macroeconomia I"
+            },
+            {
+              "name": "Finanzas privadas",
+              "credits": "3",
+              "professor": "Alvaro Alvarez",
+              "prerequisites": "Economía matematica"
+            },
+            {
+              "name": "Econometría I",
+              "credits": "3",
+              "professor": "Robienson Castro",
+              "prerequisites": "Economía matematica"
+            }
+          ]
+        },
+        {
+          "name": "Sexto semestre",
+          "subjects": [
+            {
+              "name": "Economía regional",
+              "credits": "3",
+              "professor": "Raul Quejada",
+              "prerequisites": "Macroeconomía II"
+            },
+            {
+              "name": "Macroeconomía III",
+              "credits": "4",
+              "professor": "Raul Quejada",
+              "prerequisites": "Macroeconomía II"
+            },
+            {
+              "name": "Economía ambiental",
+              "credits": "3",
+              "professor": "Martha Tanez",
+              "prerequisites": "Microeconomía III"
+            },
+            {
+              "name": "Pensamiento economico II",
+              "credits": "3",
+              "professor": "Amaury Jimenez",
+              "prerequisites": "Pensamiento economico"
+            },
+            {
+              "name": "Finanzas privadas II",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Finanzas privadas"
+            },
+            {
+              "name": "Econometría II",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Econometría I"
+            }
+          ]
+        },
+        {
+          "name": "Septimo semestre",
+          "subjects": [
+            {
+              "name": "Economía internacional",
+              "credits": "3",
+              "professor": "Raul Quejada",
+              "prerequisites": "Macroeconomía III"
+            },
+            {
+              "name": "Politica macroeconomica",
+              "credits": "3",
+              "professor": "Dewin Perez",
+              "prerequisites": "Macroeconomía III"
+            },
+            {
+              "name": "Economía publica",
+              "credits": "3",
+              "professor": "Cristian García",
+              "prerequisites": "Pensamiento economico II"
+            },
+            {
+              "name": "Desarrollo economico",
+              "credits": "3",
+              "professor": "Jorge Herrera",
+              "prerequisites": "Macroeconomía III"
+            },
+            {
+              "name": "Formulación y evaluación de proyectos",
+              "credits": "3",
+              "professor": "Juan Correa",
+              "prerequisites": "Finanzas privadas II"
+            },
+            {
+              "name": "Planificación",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Macroeconomía III"
+            }
+          ]
+        },
+        {
+          "name": "Octavo semestre",
+          "subjects": [
+            {
+              "name": "Electiva de enfasis",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Economía laboral"
+            },
+            {
+              "name": "Electiva de enfasis",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Economía de la salud"
+            },
+            {
+              "name": "Electiva de enfasis",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Economía de la educación"
+            },
+            {
+              "name": "Catedra empresarial",
+              "credits": "2",
+              "professor": "Juan Correa",
+              "prerequisites": "Desarrollo Humano sostenible"
+            },
+            {
+              "name": "Opción de grado",
+              "credits": "2",
+              "professor": "Jorge Herrera",
+              "prerequisites": "Periodismo Economico complementario I"
+            },
+            {
+              "name": "Opción de grado",
+              "credits": "2",
+              "professor": "Jorge Herrera",
+              "prerequisites": "Economía del postconflicto complementario II"
+            },
+            {
+              "name": "Curso libre",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": ""
+            },
+            {
+              "name": "",
+              "credits": "",
+              "professor": "",
+              "prerequisites": "COMERCIAL"
+            }
+          ]
+        },
+        {
+          "name": "Noveno semestre",
+          "subjects": [
+            {
+              "name": "Electiva de enfasis",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Plan de negocios, preparación  evaluación de proyectos"
+            },
+            {
+              "name": "Electiva de enfasis",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Economía portuaria compementaria II"
+            },
+            {
+              "name": "Electiva de enfasis",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Logistica del comercio internacional"
+            },
+            {
+              "name": "Catedra empresarial",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": ""
+            },
+            {
+              "name": "Opción de grado",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": ""
+            },
+            {
+              "name": "Opción de grado",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": ""
+            },
+            {
+              "name": "Curso libre",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PLAN DE ESTUDIOS 2023-2",
+      "semesters": [
+        {
+          "name": "Primer semestre",
+          "subjects": [
+            {
+              "name": "Producción y compresión de textos",
+              "credits": "2",
+              "professor": "Tania Lambraño",
+              "prerequisites": ""
+            },
+            {
+              "name": "Fundamentos de economía",
+              "credits": "2",
+              "professor": "Efraín Cuadro",
+              "prerequisites": ""
+            },
+            {
+              "name": "Fundamentos de contabilidad",
+              "credits": "3",
+              "professor": "Juan Perez",
+              "prerequisites": ""
+            },
+            {
+              "name": "Fundamentos de administración",
+              "credits": "3",
+              "professor": "Rafaela Posso",
+              "prerequisites": ""
+            },
+            {
+              "name": "Matematica I",
+              "credits": "4",
+              "professor": "Tiberio Wilches",
+              "prerequisites": ""
+            },
+            {
+              "name": "Inglés I",
+              "credits": "2",
+              "professor": "Glenis Gamarra",
+              "prerequisites": ""
+            }
+          ]
+        },
+        {
+          "name": "Segundo semestre",
+          "subjects": [
+            {
+              "name": "Producción y comprensión de textos II",
+              "credits": "2",
+              "professor": "Jose Gutierrez",
+              "prerequisites": "Producción y compresión de textos"
+            },
+            {
+              "name": "Derecho constitucional",
+              "credits": "2",
+              "professor": "María Herrazo",
+              "prerequisites": ""
+            },
+            {
+              "name": "Historia economica general",
+              "credits": "3",
+              "professor": "Claudia Cifuentes",
+              "prerequisites": "Fundamentos de economía"
+            },
+            {
+              "name": "Etica",
+              "credits": "2",
+              "professor": "Vanessa Niño",
+              "prerequisites": ""
+            },
+            {
+              "name": "Matematica II",
+              "credits": "4",
+              "professor": "Alcibaldo Miranda",
+              "prerequisites": "Matematica I"
+            },
+            {
+              "name": "Inglés II",
+              "credits": "2",
+              "professor": "Glenis Gamarra",
+              "prerequisites": "Inglés I"
+            }
+          ]
+        },
+        {
+          "name": "Tercer semeste",
+          "subjects": [
+            {
+              "name": "Macroeconomía I",
+              "credits": "4",
+              "professor": "Efraín Cuadro",
+              "prerequisites": "Fundamentos de economía"
+            },
+            {
+              "name": "Microeconomía I",
+              "credits": "3",
+              "professor": "Robinson Castro",
+              "prerequisites": "Fundamentos de economía"
+            },
+            {
+              "name": "Historia economica de colombia",
+              "credits": "3",
+              "professor": "Claudia Cifuentes-",
+              "prerequisites": "Historia economica general"
+            },
+            {
+              "name": "Estadistica I",
+              "credits": "3",
+              "professor": "Gustavo García",
+              "prerequisites": ""
+            },
+            {
+              "name": "Economía matematica",
+              "credits": "3",
+              "professor": "Jose Marrugo",
+              "prerequisites": "Matematica II"
+            },
+            {
+              "name": "Inglés III",
+              "credits": "2",
+              "professor": "Marcela Perez",
+              "prerequisites": "Inglés II"
+            }
+          ]
+        },
+        {
+          "name": "Cuarto semestre",
+          "subjects": [
+            {
+              "name": "Fundamentos de investigación",
+              "credits": "3",
+              "professor": "Nelson Alvis",
+              "prerequisites": "Estadistica I"
+            },
+            {
+              "name": "Macroeconomía II",
+              "credits": "4",
+              "professor": "Dewin Fuentes",
+              "prerequisites": "Macroeconomía I"
+            },
+            {
+              "name": "Microeconomía II",
+              "credits": "4",
+              "professor": "Rafael Gomez",
+              "prerequisites": "Microeconomía I"
+            },
+            {
+              "name": "Economía politica",
+              "credits": "3",
+              "professor": "Dewin Fuentes",
+              "prerequisites": "Historia economica de colombia"
+            },
+            {
+              "name": "Analitica de datos",
+              "credits": "2",
+              "professor": "Gustavo Camargo",
+              "prerequisites": "Estadistica I"
+            },
+            {
+              "name": "Estadistica II",
+              "credits": "3",
+              "professor": "Pedro Vega",
+              "prerequisites": "Estadistica I"
+            },
+            {
+              "name": "Inglés IV",
+              "credits": "2",
+              "professor": "Milton Zambrano",
+              "prerequisites": "Inglés III"
+            }
+          ]
+        },
+        {
+          "name": "Quinto semestre",
+          "subjects": [
+            {
+              "name": "Investigación aplicada",
+              "credits": "3",
+              "professor": "Libardo Canabal",
+              "prerequisites": "Fundamentos de investigación"
+            },
+            {
+              "name": "Macroeconomía III",
+              "credits": "3",
+              "professor": "Raul Quejada",
+              "prerequisites": "Macroeconomía II"
+            },
+            {
+              "name": "Microeconomía III",
+              "credits": "3",
+              "professor": "Amaury Jimenez",
+              "prerequisites": "Microeconomía II"
+            },
+            {
+              "name": "Tecnicas de medición",
+              "credits": "3",
+              "professor": "Dennis Marrugo",
+              "prerequisites": "Microeconomía II"
+            },
+            {
+              "name": "Finanzas privadas I",
+              "credits": "3",
+              "professor": "Alvaro Alvarez",
+              "prerequisites": "Microeconomía II"
+            },
+            {
+              "name": "Ecnometría I",
+              "credits": "3",
+              "professor": "Robinson Castro",
+              "prerequisites": "Estadistica II"
+            },
+            {
+              "name": "Inglés V",
+              "credits": "2",
+              "professor": "Rachid Moron",
+              "prerequisites": "Inglés IV"
+            }
+          ]
+        },
+        {
+          "name": "Sexto semestre",
+          "subjects": [
+            {
+              "name": "Economía regional",
+              "credits": "3",
+              "professor": "Raul Quejada",
+              "prerequisites": "Macroeconomía III"
+            },
+            {
+              "name": "Pensamiento economico",
+              "credits": "3",
+              "professor": "Amaury Jimenez",
+              "prerequisites": "Economía politica"
+            },
+            {
+              "name": "Economía colombiana",
+              "credits": "3",
+              "professor": "Claudia Cifuentes",
+              "prerequisites": "Macroeconomía II"
+            },
+            {
+              "name": "Finanzas privadas II",
+              "credits": "3",
+              "professor": "Alvaro Alvarez",
+              "prerequisites": "Estadistica II"
+            },
+            {
+              "name": "Econometria II",
+              "credits": "3",
+              "professor": "Robienson Castro",
+              "prerequisites": "Ecnometría I"
+            },
+            {
+              "name": "Analitíca de datos II",
+              "credits": "2",
+              "professor": "Gustavo Camargo",
+              "prerequisites": "Analitica de datos"
+            },
+            {
+              "name": "Formación humana",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": ""
+            },
+            {
+              "name": "Ingles VI",
+              "credits": "2",
+              "professor": "Milton Zambrano",
+              "prerequisites": "Inglés V"
+            }
+          ]
+        },
+        {
+          "name": "Septimo semestre",
+          "subjects": [
+            {
+              "name": "Economía internacional",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Finanzas privadas II"
+            },
+            {
+              "name": "Pensamiento economico II",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Pensamiento economico"
+            },
+            {
+              "name": "Economía publica",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Microeconomía III"
+            },
+            {
+              "name": "Desarrollo economico",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Finanzas privadas II"
+            },
+            {
+              "name": "Formulación y evaluación de proyectos",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Finanzas privadas II"
+            },
+            {
+              "name": "Planificación",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": "Finanzas privadas II"
+            },
+            {
+              "name": "Formación humana",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": "Formación humana"
+            }
+          ]
+        },
+        {
+          "name": "Octavo semestre",
+          "subjects": [
+            {
+              "name": "Seminario de grado",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": ""
+            },
+            {
+              "name": "Politica macroeconomica",
+              "credits": "4",
+              "professor": "",
+              "prerequisites": "Macroeconomía III"
+            },
+            {
+              "name": "Electiva I",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": ""
+            },
+            {
+              "name": "Electiva II",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": ""
+            },
+            {
+              "name": "Electiva III",
+              "credits": "3",
+              "professor": "",
+              "prerequisites": ""
+            },
+            {
+              "name": "Analisis multivariado",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": ""
+            },
+            {
+              "name": "Formación humana",
+              "credits": "2",
+              "professor": "",
+              "prerequisites": "Formación humana"
+            }
+          ]
+        },
+        {
+          "name": "Noveno semestre",
+          "subjects": [
+            {
+              "name": "Practicas",
+              "credits": "",
+              "professor": "",
+              "prerequisites": ""
+            },
+            {
+              "name": "Formación humana",
+              "credits": "",
+              "professor": "",
+              "prerequisites": "Formación humana"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
