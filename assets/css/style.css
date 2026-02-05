@@ -287,10 +287,11 @@ body.selection-active .subject-card.selected {
 
     .countdown-display {
         font-size: 2rem;
-        /* Ensure text is visible even if gradient fails on some mobile browsers */
-        background: none;
-        -webkit-text-fill-color: initial;
-        color: var(--white);
+        background: transparent !important;
+        -webkit-text-fill-color: var(--white) !important;
+        color: var(--white) !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        /* Ensure contrast */
     }
 
     .card-icon {
