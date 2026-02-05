@@ -311,6 +311,46 @@ body.selection-active .subject-card.selected {
         font-size: 2rem;
         margin-bottom: 0.5rem;
     }
+
+    /* Fixed: Ensure taller mobile bar is fully hidden */
+    .floating-bar {
+        width: 95%;
+        bottom: 15px;
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        border-radius: 20px;
+        transform: translateX(-50%) translateY(250px);
+        /* Move further down to hide taller content */
+    }
+
+    /* Override for visible state */
+    .floating-bar.visible {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .floating-bar span {
+        font-size: 0.9rem;
+    }
+
+    .floating-bar button {
+        width: 100%;
+        padding: 0.6rem;
+    }
+
+    .toast-notification {
+        top: auto;
+        bottom: 120px;
+        /* Above the floating bar */
+        width: 90%;
+        text-align: center;
+        font-size: 0.85rem;
+    }
+
+    /* Ensure Scroll Hint doesn't block clicks */
+    .scroll-hint-wrapper {
+        pointer-events: none;
+    }
 }
 
 .event-label {
@@ -343,7 +383,6 @@ body.selection-active .subject-card.selected {
     min-width: 160px;
     padding: 1rem;
     background: var(--bg-offset);
-    border-radius: 12px;
     border-left: 4px solid var(--text-gray);
     transition: all 0.3s ease;
     cursor: pointer;
