@@ -280,6 +280,19 @@ body.selection-active .subject-card.selected {
 
 /* Mobile Tweak for Countdown */
 @media (max-width: 768px) {
+    .calendar-dashboard {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .calendar-card {
+        min-width: auto;
+        /* Allow shrinking */
+        width: 100%;
+        padding: 1.5rem;
+        /* Reduced padding */
+    }
+
     .highlight-card {
         min-height: auto;
         padding: 1.5rem;
