@@ -460,8 +460,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // 10.3 Cancel Selection
+    const cancelBtn = document.getElementById('btn-cancel-selection');
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+            if (confirm('¿Cancelar selección y salir?')) {
+                selectionMode = false;
+                toggleModeBtn.click(); // Re-triggers the toggle logic to reset UI
+            }
+        });
+    }
+
+    // 10.4 Update Visuals
     function updateSelectionVisuals() {
+        const allCards = document.querySelectorAll('.subject-card');
         allCards.forEach(c => c.classList.remove('selected'));
+        if (selectedCountSpan) selectedCountSpan.textContent = "0 materias seleccionadas";
+        if (floatingBar) floatingBar.classList.remove('visible');
     }
 
     // 10.3 Form Handling
@@ -492,71 +507,76 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function generateExcel(user) {
-        // Create Data Structure
-        // According to Image:
-        // C3: Apellidos
-        // C4: Nombres
-        // C5: Codigo
-        // C6: Celular (Assuming, image showed row 6 for phone)
+    async function generateExcel(user) {
+        try {
+            // 1. Fetch the official template
+            const response = await fetch('resources/FORMATO DE PREMATRICULA PARA EL PERIODO 2026-01.xlsx');
+            if (!response.ok) throw new Error("No se pudo cargar el formato base.");
+            const arrayBuffer = await response.arrayBuffer();
 
-        // Rows start at index 0. So Row 1 is 0.
-        // C3 is cell {c:2, r:2}
+            // 2. Read the workbook
+            const wb = XLSX.read(arrayBuffer, { type: 'array' });
+            const wsName = wb.SheetNames[0];
+            const ws = wb.Sheets[wsName];
 
-        const wb = XLSX.utils.book_new();
-        const ws_name = "Prematricula 2026";
+            // 3. Helper to write to cell safely
+            function updateCell(col, row, value) {
+                const cellRef = XLSX.utils.encode_cell({ c: col, r: row }); // 0-indexed cols/rows
+                if (!ws[cellRef]) ws[cellRef] = { t: 's', v: '' }; // Create if missing
+                ws[cellRef].v = value;
+            }
 
-        // Base Data
-        const ws_data = [
-            ["", "", "FORMATO DE PREMATRÍCULA ACADÉMICA"], // Row 1
-            ["", "", "PROGRAMA DE ECONOMÍA", "", "", "PERÍODO ACADÉMICO: 2026-01"], // Row 2
-            ["", "APELLIDOS:", user.apellido], // Row 3
-            ["", "NOMBRE(S):", user.nombre], // Row 4
-            ["", "CODIGO:", user.codigo], // Row 5
-            ["", "CELULAR:", user.celular], // Row 6
-            [], // Row 7 (Empty spacer or part of header context)
-            ["", "No.", "ASIGNATURAS Y CURSOS LIBRES", "CODIGO", "GRUPO", "CREDITOS"] // Row 8 (Headers)
-        ];
+            // 4. Fill Student Data (Based on image analysis of the format)
+            // APELLIDOS -> C3 (Row index 2, Col index 2)
+            // NOMBRES -> C4 (Row index 3, Col index 2)
+            // CODIGO -> D5 (Row index 4, Col index 3) - Adjusted based on likely merge
+            // CELULAR -> D6 (Row index 5, Col index 3)
 
-        // Add Subjects
-        let counter = 1;
-        selectedSubjects.forEach(id => {
-            const card = document.getElementById(id);
-            const name = card.dataset.selName;
-            const code = card.dataset.selCode;
-            const creds = card.dataset.selCredits;
+            // Let's stick to the cells defined in previous attempt but mapped to likely real positions
+            // Inspection of image:
+            // "APELLIDOS:" is B3. Input is C3 (merged C3:E3 probably).
+            updateCell(2, 2, user.apellido); // C3
+            updateCell(2, 3, user.nombre);   // C4
+            updateCell(3, 4, user.codigo);   // D5 (Assuming "CODIGO:" is C5)
+            updateCell(3, 5, user.celular);  // D6
 
-            ws_data.push(["", counter, name, code, "", parseInt(creds)]);
-            counter++;
-        });
+            // 5. Fill Subjects (Starting Row 8 -> Index 7 is Header, so Data starts Row 9 -> Index 8)
+            // Format has rows 1 to 10 pre-numbered.
+            // "No." is B8. "ASIGNATURAS" is C8. "CODIGO" is D8, etc.
+            // Items start at Row 9 (Index 8).
 
-        // Create Sheet
-        const ws = XLSX.utils.aoa_to_sheet(ws_data);
+            let rowIndex = 8; // Row 9
+            selectedSubjects.forEach(id => {
+                const card = document.getElementById(id);
+                const name = card.dataset.selName;
+                const code = card.dataset.selCode;
+                const creds = card.dataset.selCredits;
 
-        // Merges (Styling layout per image)
-        ws['!merges'] = [
-            { s: { r: 0, c: 2 }, e: { r: 0, c: 5 } }, // Title
-            { s: { r: 1, c: 2 }, e: { r: 1, c: 4 } }, // Program Name
-            { s: { r: 2, c: 2 }, e: { r: 2, c: 5 } }, // Apellidos input wide
-            { s: { r: 3, c: 2 }, e: { r: 3, c: 5 } }  // Nombres input wide
-        ];
+                // Col C: Asignatura (Index 2)
+                updateCell(2, rowIndex, name);
+                // Col E: Codigo (Index 4) - Wait, image says "CODIGO" is after Asignaturas.
+                // Image Header: No | Asignaturas | CODIGO | GRUPO | CREDITOS
+                // A | B | C | D | E? | F?
+                // Let's assume standard layout:
+                // B: No, C: Name, D: Code, E: Group, F: Credits
 
-        // Column Widths
-        ws['!cols'] = [
-            { wch: 2 }, // A (margin)
-            { wch: 15 }, // B (Labels/No)
-            { wch: 40 }, // C (Asignaturas)
-            { wch: 10 }, // D (Codigo)
-            { wch: 10 }, // E (Grupo)
-            { wch: 10 }  // F (Creditos)
-        ];
+                updateCell(3, rowIndex, code);     // D
+                updateCell(5, rowIndex, parseInt(creds)); // F (Index 5)
 
-        XLSX.utils.book_append_sheet(wb, ws, ws_name);
-        XLSX.writeFile(wb, `Prematricula_${user.apellido}_2026.xlsx`);
+                rowIndex++;
+            });
 
-        // Reset
-        selectionMode = false;
-        toggleModeBtn.click(); // Reset UI
+            // 6. Export
+            XLSX.writeFile(wb, `Prematricula_${user.apellido}_2026.xlsx`);
+
+            // Reset UI
+            selectionMode = false;
+            toggleModeBtn.click();
+
+        } catch (error) {
+            console.error(error);
+            alert("Error generando el archivo. Verifica que el formato base exista en 'resources/'.");
+        }
     }
 
     // --- 11. Dynamic Calendar Logic ---
