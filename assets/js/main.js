@@ -575,8 +575,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cancelBtn) {
         cancelBtn.addEventListener('click', () => {
             if (confirm('¿Cancelar selección y salir?')) {
-                selectionMode = false;
-                toggleModeBtn.click(); // Re-triggers the toggle logic to reset UI
+                // Just click the toggle button. It will flip selectionMode from true to false
+                // and handle all UI updates (hiding bar, clearing selections, removing toast).
+                toggleModeBtn.click();
             }
         });
     }
