@@ -1620,24 +1620,33 @@ footer {
     position: fixed;
     bottom: 20px;
     left: 50%;
-    transform: translateX(-50%) translateY(100px);
+    transform: translateX(-50%) translateY(200px);
     /* Hidden by default */
     background: var(--primary-color);
     padding: 1rem 2rem;
+    /* Comfortable padding */
     border-radius: 50px;
     display: flex;
+    /* Flex row for desktop */
     align-items: center;
+    justify-content: space-between;
     gap: 2rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     z-index: 2000;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     color: white;
     width: 90%;
-    max-width: 500px;
-    justify-content: space-between;
+    max-width: 700px;
+    /* Increased from 500px for Desktop to prevent cramping */
+    backdrop-filter: blur(10px);
+    /* Glassmorphism touch */
+}
 
-    /* FIX: Hide completely by default on all screens */
-    transform: translateX(-50%) translateY(200px);
+/* Container for buttons */
+.bar-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 
 .floating-bar.visible {
