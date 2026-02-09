@@ -79,14 +79,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sortedProfs.forEach(pName => {
             const card = document.createElement('div');
-            card.className = 'professor-card';
+            card.className = 'professor-card clickable'; // Add clickable class for pointer cursor
             card.innerHTML = `
                 <div class="prof-icon"><i class="fas fa-user-tie"></i></div>
                 <h4>${pName}</h4>
                 <p>Docente</p>
+                <div class="prof-subjects-hint" style="font-size: 0.75rem; color: var(--primary-light); margin-top:0.5rem;">Ver Materias <i class="fas fa-chevron-right"></i></div>
             `;
+
+            // Add Click Event
+            card.addEventListener('click', () => {
+                showProfessorDetails(pName);
+            });
+
             container.appendChild(card);
         });
+    }
+
+    function showProfessorDetails(pName) {
+        // Find all subjects taught by this professor
+        const taughtSubjects = [];
+        Object.keys(subjectData).forEach(key => {
+            const data = subjectData[key];
+            if (data.professors && data.professors.includes(pName)) {
+                // Find subject name from DOM if possible, or use ID
+                const subjectElement = document.getElementById(key);
+                const subjectName = subjectElement ? subjectElement.innerText.split('\n')[0].trim() : key.toUpperCase();
+                taughtSubjects.push({ name: subjectName, code: data.code });
+            }
+        });
+
+        // Use standard modal to show info
+        const modal = document.getElementById('subject-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalCredits = document.getElementById('modal-credits');
+        const modalCode = document.getElementById('modal-code');
+        const prereqList = document.getElementById('modal-prereqs');
+        const profSection = document.getElementById('modal-profs-section'); // We might hide this or reuse
+
+        // Set Content
+        modalTitle.textContent = pName;
+        modalCode.textContent = "Docente"; // Or blank
+        modalCredits.textContent = "";
+
+        // Build List of Subjects
+        let subjectsHtml = '<ul style="list-style: none; padding: 0;">';
+        if (taughtSubjects.length > 0) {
+            taughtSubjects.forEach(sub => {
+                subjectsHtml += `<li style="margin-bottom: 0.5rem; border-bottom: 1px solid #eee; padding-bottom: 0.25rem;">
+                    <strong>${sub.name}</strong> <span class="badge" style="font-size: 0.7em;">${sub.code}</span>
+                </li>`;
+            });
+            subjectsHtml += '</ul>';
+        } else {
+            subjectsHtml = '<p>No hay materias asignadas en el registro actual.</p>';
+        }
+
+        modalDesc.innerHTML = `<p>Materias impartidas en el periodo actual:</p>${subjectsHtml}`;
+
+        // Clear other fields
+        prereqList.innerHTML = '';
+        if (profSection) profSection.innerHTML = '';
+
+        modal.style.display = 'flex';
     }
 
     function initCurriculumInteraction() {
