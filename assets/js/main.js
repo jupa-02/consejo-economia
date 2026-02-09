@@ -492,6 +492,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const toast = document.getElementById('selection-toast');
 
     // 10.1 Toggle Selection Mode
+    const tutorialOverlay = document.getElementById('tutorial-overlay');
+    const closeTutorialBtn = document.getElementById('btn-close-tutorial');
+
+    if (closeTutorialBtn && tutorialOverlay) {
+        closeTutorialBtn.addEventListener('click', () => {
+            tutorialOverlay.classList.remove('visible');
+            localStorage.setItem('hasSeenTutorial', 'true');
+        });
+
+        // Click outside to close (Optional)
+        tutorialOverlay.addEventListener('click', (e) => {
+            if (e.target === tutorialOverlay) {
+                tutorialOverlay.classList.remove('visible');
+                localStorage.setItem('hasSeenTutorial', 'true');
+            }
+        });
+    }
+
     if (toggleModeBtn) {
         toggleModeBtn.addEventListener('click', () => {
             selectionMode = !selectionMode;
@@ -501,8 +519,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleModeBtn.innerHTML = '<i class="fas fa-check-square"></i> Finalizar Selección';
                 document.body.classList.add('selection-active');
 
-                // Show toast
-                if (toast) {
+                // Show Overlay if not seen before
+                if (!localStorage.getItem('hasSeenTutorial') && tutorialOverlay) {
+                    tutorialOverlay.classList.add('visible');
+                } else if (toast) {
+                    // Fallback to toast if tutorial seen
                     toast.classList.add('show');
                     setTimeout(() => toast.classList.remove('show'), 4000);
                 }

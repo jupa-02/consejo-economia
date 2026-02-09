@@ -1839,3 +1839,80 @@ footer {
         width: 100%;
     }
 }
+
+/* --- Overlay Instruction --- */
+.overlay-instruction {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.overlay-instruction.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.overlay-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 90%;
+    width: 350px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.overlay-instruction.visible .overlay-content {
+    transform: translateY(0);
+}
+
+.hand-animation {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    animation: handBounce 1.5s infinite;
+}
+
+.overlay-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.overlay-content p {
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.overlay-content button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 50px;
+    font-weight: 700;
+}
+
+@keyframes handBounce {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-10px) scale(1.1);
+    }
+}
