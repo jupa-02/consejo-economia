@@ -1713,3 +1713,70 @@ footer {
         pointer-events: none;
     }
 }
+
+/* --- Claustro Docente Section --- */
+.professors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.professor-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.professor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-gold);
+    border-color: var(--gold);
+}
+
+.prof-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--bg-offset);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.professor-card h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-dark);
+}
+
+.professor-card p {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    margin: 0;
+}
+
+/* Modal Updates */
+.modal-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.modal-section h4 {
+    font-size: 0.95rem;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.modal-section p {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}

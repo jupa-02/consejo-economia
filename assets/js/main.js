@@ -60,6 +60,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 2. Interactive Curriculum (Malla 2025) ---
     initCurriculumInteraction();
+    initProfessorGrid();
+
+    function initProfessorGrid() {
+        const container = document.getElementById('professors-container');
+        if (!container || typeof subjectData === 'undefined') return;
+
+        // Extract unique professors
+        const allProfs = new Set();
+        Object.values(subjectData).forEach(data => {
+            if (data.professors) {
+                data.professors.forEach(p => allProfs.add(p));
+            }
+        });
+
+        // Convert to array and sort
+        const sortedProfs = Array.from(allProfs).sort();
+
+        sortedProfs.forEach(pName => {
+            const card = document.createElement('div');
+            card.className = 'professor-card';
+            card.innerHTML = `
+                <div class="prof-icon"><i class="fas fa-user-tie"></i></div>
+                <h4>${pName}</h4>
+                <p>Docente</p>
+            `;
+            container.appendChild(card);
+        });
+    }
 
     function initCurriculumInteraction() {
         const cards = document.querySelectorAll('.subject-card');
@@ -93,6 +121,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const title = card.childNodes[0].textContent.trim();
                 const credits = card.querySelector('.badge') ? card.querySelector('.badge').textContent : '';
 
+                // Get Real Data if available
+                let realCode = '---';
+                let realProfs = [];
+
+                if (typeof subjectData !== 'undefined' && subjectData[subjectId]) {
+                    realCode = subjectData[subjectId].code;
+                    realProfs = subjectData[subjectId].professors || [];
+                }
+
                 // 1. Highlight Logic
                 clearHighlights();
                 document.body.classList.add('interacting');
@@ -114,10 +151,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('modal-title').textContent = title;
                 document.getElementById('modal-credits').textContent = credits;
                 document.getElementById('modal-desc').textContent = description;
-                document.getElementById('modal-code').textContent = subjectId ? subjectId.toUpperCase() : '---';
+                document.getElementById('modal-code').textContent = realCode;
 
                 const prereqList = document.getElementById('modal-prereqs');
                 prereqList.innerHTML = '';
+
+                // Add Professors to Modal (Dynamically created if not exists)
+                let profSection = document.getElementById('modal-profs-section');
+                if (!profSection) {
+                    profSection = document.createElement('div');
+                    profSection.id = 'modal-profs-section';
+                    profSection.className = 'modal-section mt-1';
+                    // Insert after description
+                    document.getElementById('modal-desc').after(profSection);
+                }
+
+                if (realProfs.length > 0) {
+                    profSection.innerHTML = `<h4><i class="fas fa-chalkboard-teacher"></i> Docente(s):</h4><p>${realProfs.join(', ')}</p>`;
+                } else {
+                    profSection.innerHTML = '';
+                }
+
 
                 if (prereqNames.length > 0) {
                     prereqNames.forEach(name => {
