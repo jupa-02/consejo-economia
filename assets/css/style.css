@@ -275,6 +275,7 @@ body.selection-active .subject-card.selected {
     background: -webkit-linear-gradient(45deg, #fff, #ddd);
     background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -823,6 +824,7 @@ body.selection-active .subject-card.selected {
     font-size: 3rem;
     background: var(--gold-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1.5rem;
 }
