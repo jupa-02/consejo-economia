@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Consejo de Economía</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .admin-login-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            color: white;
+            text-align: center;
+        }
+        .login-card {
+            background: var(--primary-light);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-gold);
+            border: 1px solid var(--gold);
+            max-width: 400px;
+            width: 90%;
+        }
+        .login-card input {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--gold);
+            color: white;
+            padding: 1rem;
+            border-radius: 50px;
+            width: 100%;
+            text-align: center;
+            font-size: 1.5rem;
+            letter-spacing: 10px;
+            margin: 2rem 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .stat-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border-bottom: 5px solid var(--gold);
+        }
+        .stat-box i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: block;
+        }
+        .stat-label {
+            color: var(--text-gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        #admin-content {
+            display: none;
+            padding-top: 120px;
+        }
+        .header-admin {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--gold);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Overlay -->
+    <div id="login-overlay" class="admin-login-overlay">
+        <div class="login-card">
+            <img src="assets/images/logo.png" alt="Logo" style="height: 80px; margin-bottom: 1rem; background: white; padding: 5px; border-radius: 50%;">
+            <h2>Acceso Administrador</h2>
+            <p>Ingresa el PIN de seguridad</p>
+            <input type="password" id="admin-pin" maxlength="4" placeholder="••••" inputmode="numeric">
+            <button id="btn-login" class="btn btn-primary" style="width: 100%;">Entrar</button>
+            <p id="login-error" style="color: #ff6b6b; margin-top: 1rem; display: none;">PIN Incorrecto</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="admin-content">
+        <header class="header-admin">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <h1 style="color: white; font-size: 1.8rem; margin: 0;">Panel de Estadísticas</h1>
+                <a href="index.html" class="btn btn-outline-light" style="padding: 0.5rem 1rem; border: 1px solid white; color: white;">Volver al Sitio</a>
+            </div>
+        </header>
+
+        <main class="container">
+            <div class="section-header" style="margin-top: 2rem;">
+                <h2>Resumen de Actividad</h2>
+                <div class="line"></div>
+                <p>Datos en tiempo real recolectados por CounterAPI</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <i class="fas fa-users"></i>
+                    <span id="stat-visits" class="stat-number">...</span>
+                    <span class="stat-label">Visitas Totales</span>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-folder-open"></i>
+                    <span id="stat-parciales" class="stat-number">...</span>
+                    <span class="stat-label">Clics Parciales</span>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-bullhorn"></i>
+                    <span id="stat-pqrs" class="stat-number">...</span>
+                    <span class="stat-label">Clics PQRS</span>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; text-align: center; color: var(--text-gray);">
+                <p><i class="fas fa-info-circle"></i> Los datos de visitas se filtran por sesión (10 min) para evitar duplicados por recarga.</p>
+                <button id="btn-refresh" class="btn btn-outline" style="margin-top: 1rem;">
+                    <i class="fas fa-sync-alt"></i> Actualizar Datos
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>

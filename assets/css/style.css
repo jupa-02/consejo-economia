@@ -47,6 +47,11 @@ body {
     overflow-x: hidden;
 }
 
+/* Offset for fixed navbar */
+html {
+    scroll-padding-top: 80px;
+}
+
 h1,
 h2,
 h3,
@@ -1036,6 +1041,8 @@ body.selection-active .subject-card.selected {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     font-weight: 600;
     font-size: 0.95rem;
     color: var(--text-dark);
@@ -1431,6 +1438,14 @@ footer {
 
     .hero p {
         font-size: 1.1rem;
+    }
+
+    .ticker-track {
+        gap: 1.5rem;
+    }
+
+    .ticker-item {
+        font-size: 0.85rem;
     }
 
     .section-header h2 {

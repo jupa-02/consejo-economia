@@ -168,7 +168,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cards.forEach(card => {
             card.addEventListener('click', () => {
-                if (selectionMode) return; // Prevent modal if selecting for Excel
+                if (selectionMode) {
+                    card.classList.toggle('selected');
+                    const subjectId = card.id;
+                    if (selectedSubjects.has(subjectId)) {
+                        selectedSubjects.delete(subjectId);
+                    } else {
+                        // Gather data for Excel
+                        const title = card.childNodes[0].textContent.trim();
+                        const creditsBadge = card.querySelector('.badge');
+                        const credits = creditsBadge ? creditsBadge.textContent.replace(' Créditos', '').replace(' Crédito', '') : '0';
+                        const code = (typeof subjectData !== 'undefined' && subjectData[subjectId]) ? subjectData[subjectId].code : '---';
+
+                        // Save to card dataset for easy retrieval later
+                        card.dataset.selName = title;
+                        card.dataset.selCode = code;
+                        card.dataset.selCredits = credits;
+                        
+                        selectedSubjects.add(subjectId);
+                    }
+                    updateFloatingBar();
+                    return;
+                }
 
                 const subjectId = card.id;
                 const prereqs = card.dataset.prereqs ? card.dataset.prereqs.split(' ') : [];
@@ -276,7 +297,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
 
     if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             navLinks.classList.toggle('active');
 
             // Icon animation (hamburger to times)
@@ -298,6 +320,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
             });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
         });
     }
 
@@ -547,7 +581,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ... (Section 10.2 remains unchanged) ...
+    // 10.2 Card Selection (Handled inside initCurriculumInteraction click listener)
 
     function updateFloatingBar() {
         if (selectedSubjects.size > 0) {
@@ -562,9 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelBtn = document.getElementById('btn-cancel-selection');
     if (cancelBtn) {
         cancelBtn.addEventListener('click', () => {
-            if (confirm('¿Cancelar selección y salir?')) {
-                disableSelectionMode(); // Explicitly disable instead of toggling
-            }
+            disableSelectionMode(); 
         });
     }
 
@@ -672,7 +704,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error(error);
-            alert("Error generando el archivo. Verifica que el formato base exista en 'resources/'.");
+            alert("Error generando el archivo. Verifica que el formato base exista en 'resources/'.\n\nNOTA: Si estás probando localmente, esta función requiere un servidor (como GitHub Pages) debido a restricciones de seguridad (CORS).");
+        } finally {
+            disableSelectionMode();
+            formModal.style.display = 'none';
         }
     }
 
@@ -750,6 +785,37 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="days">${days}</span> días <span class="hours">${hours}</span> hrs
         `;
     }
+
+    // --- 12. Statistics Tracking ---
+    const STATS_NAMESPACE = 'cee-unicartagena';
+    
+    function trackStat(key) {
+        // Prevent tracking during development/local if desired, but here we'll just do it
+        // and handle errors gracefully.
+        fetch(`https://api.counterapi.dev/v1/${STATS_NAMESPACE}/${key}/up`)
+            .catch(err => console.debug('Stats skip:', err));
+    }
+
+    // Page view (discreetly)
+    // We only count if not seen in the last 10 minutes to avoid refresh spamming
+    const lastVisit = localStorage.getItem('last_visit_time');
+    const nowTimestamp = Date.now();
+    if (!lastVisit || (nowTimestamp - lastVisit > 600000)) {
+        trackStat('visits');
+        localStorage.setItem('last_visit_time', nowTimestamp);
+    }
+
+    // Click tracking
+    document.addEventListener('click', (e) => {
+        const target = e.target.closest('a');
+        if (!target) return;
+
+        if (target.id === 'link-parciales' || target.href.includes('drive.google.com')) {
+            trackStat('parciales_clicks');
+        } else if (target.id === 'link-pqrs' || target.href.includes('forms.gle') || target.href.includes('docs.google.com/forms')) {
+            trackStat('pqrs_clicks');
+        }
+    });
 
     // Init Data Fetch (Restored)
     fetchEconomicIndicators();
