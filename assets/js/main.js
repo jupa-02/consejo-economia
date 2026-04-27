@@ -787,7 +787,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 12. Statistics Tracking ---
-    const STATS_NAMESPACE = 'cee-unicartagena';
+    const STATS_NAMESPACE = 'consejo-economia-udc';
     
     function trackStat(key) {
         // Prevent tracking during development/local if desired, but here we'll just do it

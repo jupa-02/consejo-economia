@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const STATS_NAMESPACE = 'cee-unicartagena';
+    const STATS_NAMESPACE = 'consejo-economia-udc';
     const CORRECT_PIN = '2026';
     
     const loginOverlay = document.getElementById('login-overlay');
@@ -49,17 +49,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const keys = ['visits', 'parciales_clicks', 'pqrs_clicks'];
-            const results = await Promise.all(keys.map(key => 
-                fetch(`https://api.counterapi.dev/v1/${STATS_NAMESPACE}/${key}`).then(res => res.json())
-            ));
+            const results = await Promise.all(keys.map(async (key) => {
+                const res = await fetch(`https://api.counterapi.dev/v1/${STATS_NAMESPACE}/${key}`);
+                if (!res.ok) throw new Error(`API Error: ${res.status}`);
+                return res.json();
+            }));
 
             visitsDisplay.textContent = results[0].count || 0;
             parcialesDisplay.textContent = results[1].count || 0;
             pqrsDisplay.textContent = results[2].count || 0;
 
+            // Remove error message if successful
+            const statusMsg = document.getElementById('api-status');
+            if (statusMsg) statusMsg.remove();
+
         } catch (error) {
             console.error('Error fetching stats:', error);
-            alert('Error al conectar con la API de estadísticas.');
+            visitsDisplay.textContent = '---';
+            parcialesDisplay.textContent = '---';
+            pqrsDisplay.textContent = '---';
+
+            // Show status message
+            let statusMsg = document.getElementById('api-status');
+            if (!statusMsg) {
+                statusMsg = document.createElement('p');
+                statusMsg.id = 'api-status';
+                statusMsg.style.cssText = 'grid-column: 1 / -1; text-align: center; margin-top: 1rem; color: #f6ad55; font-size: 0.9rem;';
+                document.querySelector('.stats-grid').appendChild(statusMsg);
+            }
+            statusMsg.innerHTML = '<i class="fas fa-exclamation-triangle"></i> El servidor de estadísticas está en mantenimiento temporal. Los datos volverán pronto.';
         }
     }
 
