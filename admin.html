@@ -7,146 +7,99 @@
     <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .admin-login-overlay {
-            position: fixed;
-            inset: 0;
-            background: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            color: white;
-            text-align: center;
-        }
-        .login-card {
-            background: var(--primary-light);
-            padding: 3rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-gold);
-            border: 1px solid var(--gold);
-            max-width: 400px;
-            width: 90%;
-        }
-        .login-card input {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid var(--gold);
-            color: white;
-            padding: 1rem;
-            border-radius: 50px;
-            width: 100%;
-            text-align: center;
-            font-size: 1.5rem;
-            letter-spacing: 10px;
-            margin: 2rem 0;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        .stat-box {
-            background: white;
-            padding: 2.5rem;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
-            text-align: center;
-            border-bottom: 5px solid var(--gold);
-        }
-        .stat-box i {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            display: block;
-        }
-        .stat-label {
-            color: var(--text-gray);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        #admin-content {
-            display: none;
-            padding-top: 120px;
-        }
-        .header-admin {
-            background: var(--primary-color);
-            color: white;
-            padding: 2rem 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 2px solid var(--gold);
-        }
+        .admin-login-overlay{position:fixed;inset:0;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;z-index:9999;color:white}
+        .login-card{background:rgba(255,255,255,.06);backdrop-filter:blur(20px);padding:3rem;border-radius:var(--radius-lg);box-shadow:0 20px 60px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.1);max-width:400px;width:90%;text-align:center}
+        .login-card h2{color:var(--white)!important;margin-bottom:.5rem}.login-card p{color:rgba(255,255,255,.7);margin-bottom:1.5rem}
+        .login-card input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:white;padding:1rem;border-radius:50px;width:100%;text-align:center;font-size:1.5rem;letter-spacing:10px;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;transition:all .3s}
+        .login-card input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 20px rgba(201,162,39,.3)}
+        .login-card input::placeholder{color:rgba(255,255,255,.3)}
+        .login-error{color:#ff6b6b;margin-top:1rem;display:none;font-size:.9rem}
+        .login-attempts{color:rgba(255,255,255,.4);font-size:.8rem;margin-top:.5rem}
+        #admin-content{display:none;padding-top:100px;min-height:100vh;background:var(--bg)}
+        .header-admin{background:var(--primary);color:white;padding:1.2rem 0;position:fixed;top:0;width:100%;z-index:1000;border-bottom:2px solid var(--gold);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+        .header-admin-inner{display:flex;justify-content:space-between;align-items:center}
+        .header-admin h1{color:white!important;font-size:1.5rem;margin:0}
+        .header-actions{display:flex;gap:.8rem;align-items:center}
+        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:2rem}
+        .stat-box{background:var(--white);padding:2rem;border-radius:var(--radius);box-shadow:var(--shadow-sm);text-align:center;border-bottom:4px solid var(--gold);transition:all .3s;position:relative;overflow:hidden}
+        .stat-box:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+        .stat-box i{font-size:2.5rem;color:var(--gold);margin-bottom:.8rem;display:block}
+        .stat-number{font-size:3rem;font-weight:800;color:var(--primary);display:block;font-family:'JetBrains Mono',monospace}
+        .stat-label{color:var(--text-gray);font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:.8rem}
+        .admin-section{margin-top:3rem;background:var(--white);padding:2rem;border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+        .admin-section h3{font-size:1.3rem;margin-bottom:1.5rem;color:var(--primary)}
+        .activity-log{max-height:400px;overflow-y:auto}
+        .log-item{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;border-bottom:1px solid rgba(0,0,0,.04);font-size:.9rem;transition:background .2s}
+        .log-item:hover{background:var(--bg-offset)}
+        .log-type{padding:.2rem .6rem;border-radius:50px;font-size:.7rem;font-weight:700;text-transform:uppercase}
+        .log-type.visit{background:rgba(59,130,246,.1);color:#3b82f6}
+        .log-type.click{background:rgba(34,197,94,.1);color:#22c55e}
+        .log-type.calc{background:rgba(245,158,11,.1);color:#f59e0b}
+        .chart-container{width:100%;height:250px;position:relative;margin-top:1rem}
+        .chart-container canvas{width:100%!important;height:100%!important}
+        .export-section{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;justify-content:center}
+        .announcements-manage{margin-top:1rem}
+        .ann-manage-item{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;background:var(--bg-offset);border-radius:var(--radius-sm);margin-bottom:.5rem}
+        .ann-manage-item button{background:none;border:none;color:#ef4444;cursor:pointer;font-size:1rem;padding:4px}
+        .ann-manage-item button:hover{transform:scale(1.2)}
+        @media(max-width:768px){.header-admin h1{font-size:1.1rem}.stats-grid{grid-template-columns:1fr}.header-actions{gap:.4rem}.header-actions .btn{padding:.4rem .8rem;font-size:.8rem}}
     </style>
 </head>
 <body>
-
-    <!-- Login Overlay -->
     <div id="login-overlay" class="admin-login-overlay">
         <div class="login-card">
-            <img src="assets/images/logo.png" alt="Logo" style="height: 80px; margin-bottom: 1rem; background: white; padding: 5px; border-radius: 50%;">
-            <h2>Acceso Administrador</h2>
+            <img src="assets/images/logo.png" alt="Logo" style="height:70px;margin:0 auto 1rem;background:white;padding:5px;border-radius:50%;display:block">
+            <h2>Panel Administrativo</h2>
             <p>Ingresa el PIN de seguridad</p>
-            <input type="password" id="admin-pin" maxlength="4" placeholder="••••" inputmode="numeric">
-            <button id="btn-login" class="btn btn-primary" style="width: 100%;">Entrar</button>
-            <p id="login-error" style="color: #ff6b6b; margin-top: 1rem; display: none;">PIN Incorrecto</p>
+            <input type="password" id="admin-pin" placeholder="Contraseña" autocomplete="off">
+            <button id="btn-login" class="btn btn-primary" style="width:100%">Entrar</button>
+            <p id="login-error" class="login-error">PIN Incorrecto</p>
+            <p id="login-attempts" class="login-attempts"></p>
         </div>
     </div>
-
-    <!-- Main Content -->
     <div id="admin-content">
         <header class="header-admin">
-            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-                <h1 style="color: white; font-size: 1.8rem; margin: 0;">Panel de Estadísticas</h1>
-                <a href="index.html" class="btn btn-outline-light" style="padding: 0.5rem 1rem; border: 1px solid white; color: white;">Volver al Sitio</a>
+            <div class="container header-admin-inner">
+                <h1><i class="fas fa-chart-bar" style="color:var(--gold)"></i> Panel de Estadísticas</h1>
+                <div class="header-actions">
+                    <button id="btn-refresh" class="btn btn-outline-light" style="padding:.5rem 1rem;font-size:.85rem"><i class="fas fa-sync-alt"></i> Actualizar</button>
+                    <button id="btn-logout" class="btn btn-outline-light" style="padding:.5rem 1rem;font-size:.85rem"><i class="fas fa-sign-out-alt"></i> Salir</button>
+                    <a href="index.html" class="btn btn-outline-light" style="padding:.5rem 1rem;font-size:.85rem"><i class="fas fa-arrow-left"></i> Sitio</a>
+                </div>
             </div>
         </header>
-
-        <main class="container">
-            <div class="section-header" style="margin-top: 2rem;">
-                <h2>Resumen de Actividad</h2>
-                <div class="line"></div>
-                <p>Datos en tiempo real recolectados por CounterAPI</p>
-            </div>
-
+        <main class="container" style="padding-bottom:4rem">
+            <div class="section-header" style="margin-top:2rem"><h2>Resumen de Actividad</h2><div class="line"></div></div>
             <div class="stats-grid">
-                <div class="stat-box">
-                    <i class="fas fa-users"></i>
-                    <span id="stat-visits" class="stat-number">...</span>
-                    <span class="stat-label">Visitas Totales</span>
-                </div>
-                <div class="stat-box">
-                    <i class="fas fa-folder-open"></i>
-                    <span id="stat-parciales" class="stat-number">...</span>
-                    <span class="stat-label">Clics Parciales</span>
-                </div>
-                <div class="stat-box">
-                    <i class="fas fa-bullhorn"></i>
-                    <span id="stat-pqrs" class="stat-number">...</span>
-                    <span class="stat-label">Clics PQRS</span>
-                </div>
+                <div class="stat-box"><i class="fas fa-users"></i><span id="stat-visits" class="stat-number">...</span><span class="stat-label">Visitas Totales</span></div>
+                <div class="stat-box"><i class="fas fa-folder-open"></i><span id="stat-parciales" class="stat-number">...</span><span class="stat-label">Clics Parciales</span></div>
+                <div class="stat-box"><i class="fas fa-bullhorn"></i><span id="stat-pqrs" class="stat-number">...</span><span class="stat-label">Clics PQRS</span></div>
+                <div class="stat-box"><i class="fas fa-calculator"></i><span id="stat-calculator" class="stat-number">...</span><span class="stat-label">Uso Calculadora</span></div>
             </div>
-
-            <div style="margin-top: 4rem; text-align: center; color: var(--text-gray);">
-                <p><i class="fas fa-info-circle"></i> Los datos de visitas se filtran por sesión (10 min) para evitar duplicados por recarga.</p>
-                <button id="btn-refresh" class="btn btn-outline" style="margin-top: 1rem;">
-                    <i class="fas fa-sync-alt"></i> Actualizar Datos
-                </button>
+            <div class="admin-section">
+                <h3><i class="fas fa-chart-area" style="color:var(--gold)"></i> Tendencia de Visitas (Últimos 7 días)</h3>
+                <div class="chart-container"><canvas id="visits-chart"></canvas></div>
+            </div>
+            <div class="admin-section">
+                <h3><i class="fas fa-bullhorn" style="color:var(--gold)"></i> Gestionar Anuncios</h3>
+                <div class="announcements-manage" id="admin-announcements"></div>
+            </div>
+            <div class="admin-section">
+                <h3><i class="fas fa-calendar" style="color:var(--gold)"></i> Eventos Personalizados del Calendario</h3>
+                <div class="announcements-manage" id="admin-calendar-events"></div>
+            </div>
+            <div class="export-section">
+                <button id="btn-export-csv" class="btn btn-outline" style="font-size:.9rem"><i class="fas fa-file-csv"></i> Exportar Estadísticas CSV</button>
+                <button id="btn-reset-stats" class="btn btn-outline" style="font-size:.9rem;border-color:#ef4444;color:#ef4444"><i class="fas fa-trash-alt"></i> Resetear Estadísticas</button>
             </div>
         </main>
     </div>
-
-    <script src="assets/js/admin.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="assets/js/admin.js?v=2"></script>
 </body>
 </html>

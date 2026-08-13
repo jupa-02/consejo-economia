@@ -1,798 +1,667 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Consejo de Economía - Universidad de Cartagena. Recursos académicos, modalidades de grado y catálogo de cursos.">
+    <meta name="description" content="Consejo de Economía - Universidad de Cartagena. Herramientas académicas, indicadores económicos en vivo, calculadora de notas, malla curricular interactiva y más.">
     <title>Consejo de Economía | Universidad de Cartagena</title>
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/logo.png">
-
-    <!-- Fonts: Playfair Display (Headers) & Inter (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
-        rel="stylesheet">
-
-    <!-- Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#inicio" class="logo">
-                <img src="assets/images/logo.png" alt="Logo Consejo Economía" id="nav-logo">
-                <span>Consejo de Economía</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#programa">Programa</a></li>
-                <li><a href="#modalidades">Modalidades</a></li>
-                <li><a href="#catalogo">Catálogo</a></li>
-                <li><a href="#calculadora">Calculadora</a></li>
-                <li><a href="#experiencia" class="btn-highlight" id="link-pqrs">Tu Experiencia</a></li>
-            </ul>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Economic Ticker -->
-    <div class="economic-ticker">
-        <div class="ticker-track">
-            <!-- Set 1 -->
-            <span class="ticker-item" id="ticker-trm">TRM (USD): $3.593 <i
-                    class="fas fa-circle-notch fa-spin"></i></span>
-            <span class="ticker-item" id="ticker-ipc">IPC (Anual '25): 5.10% <i class="fas fa-chart-line"></i></span>
-            <span class="ticker-item" id="ticker-desempleo">Desempleo (Dic '25): 8.0% <i
-                    class="fas fa-minus text-success"></i></span>
-            <span class="ticker-item" id="ticker-pib">PIB (Cierre '24): +1.7% <i
-                    class="fas fa-arrow-up text-success"></i></span>
-            <span class="ticker-item" id="ticker-tasabanrep">Tasa BanRep: 10.25% <i
-                    class="fas fa-university"></i></span>
-            <span class="ticker-item" id="ticker-uvr">UVR: 398.32 <i class="fas fa-coins"></i></span>
-
-            <!-- Set 2 (Duplicate for scroll) -->
-            <span class="ticker-item" id="ticker-trm-2">TRM (USD): $3.593 <i class="fas fa-minus"></i></span>
-            <span class="ticker-item" id="ticker-ipc-2">IPC (Anual '25): 5.10% <i class="fas fa-chart-line"></i></span>
-            <span class="ticker-item" id="ticker-desempleo-2">Desempleo (Dic '25): 8.0% <i
-                    class="fas fa-minus text-success"></i></span>
-            <span class="ticker-item" id="ticker-pib-2">PIB (Cierre '24): +1.7% <i
-                    class="fas fa-arrow-up text-success"></i></span>
-            <span class="ticker-item" id="ticker-tasabanrep-2">Tasa BanRep: 10.25% <i
-                    class="fas fa-university"></i></span>
-            <span class="ticker-item" id="ticker-uvr-2">UVR: 398.32 <i class="fas fa-coins"></i></span>
+<!-- Navigation -->
+<nav class="navbar" id="main-nav">
+    <div class="container nav-container">
+        <a href="#inicio" class="logo">
+            <img src="assets/images/logo.png" alt="Logo Consejo Economía" id="nav-logo">
+            <span>Consejo de Economía</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#indicadores">Indicadores</a></li>
+            <li><a href="#programa">Programa</a></li>
+            <li><a href="#catalogo">Malla</a></li>
+            <li><a href="#herramientas">Herramientas</a></li>
+            <li><a href="#anuncios">Anuncios</a></li>
+            <li><a href="#calculadora">Calculadora</a></li>
+            <li><a href="#experiencia" class="btn-highlight" id="link-pqrs">PQRS</a></li>
+        </ul>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
         </div>
     </div>
+</nav>
 
-    <!-- Hero Section -->
-    <header id="inicio" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <h1 class="fade-in">Excelencia Académica y Liderazgo</h1>
-            <p class="fade-in delay-1">Facultad de Ciencias Económicas - Universidad de Cartagena</p>
-            <div class="hero-buttons fade-in delay-2">
-                <a href="#catalogo" class="btn btn-primary">Ver Malla Curricular</a>
-                <a href="#calendario" class="btn btn-outline-light">
-                    <i class="far fa-calendar-alt"></i> Calendario 2026
+<!-- Economic Ticker -->
+<div class="economic-ticker">
+    <div class="ticker-track" id="ticker-track">
+        <!-- Populated by JS -->
+    </div>
+</div>
+
+<!-- Hero -->
+<header id="inicio" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-particles" id="hero-particles"></div>
+    <div class="container hero-content">
+        <h1 class="fade-in">Excelencia Académica<br>y Liderazgo Económico</h1>
+        <p class="fade-in delay-1">Facultad de Ciencias Económicas — Universidad de Cartagena</p>
+        <div class="hero-buttons fade-in delay-2">
+            <a href="#catalogo" class="btn btn-primary">Ver Malla Curricular</a>
+            <a href="#herramientas" class="btn btn-outline-light">
+                <i class="fas fa-tools"></i> Herramientas
+            </a>
+            <a href="#calendario" class="btn btn-outline-light">
+                <i class="far fa-calendar-alt"></i> Calendario 2026
+            </a>
+        </div>
+    </div>
+    <a href="#quienes-somos" class="scroll-indicator"><i class="fas fa-chevron-down"></i></a>
+</header>
+
+<!-- Quiénes Somos -->
+<section id="quienes-somos" class="section bg-white text-center">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>Quiénes Somos</h2>
+            <div class="line"></div>
+        </div>
+        <div class="about-content reveal">
+            <p class="lead-text">"Bienvenid@s a la comunidad del programa de economía. Trabajamos por y para impulsar nuestro programa 📊📚✨"</p>
+            <p style="margin-top:1rem;color:var(--text-gray)">Somos el Consejo Estudiantil, un equipo dedicado a velar por el bienestar académico y la excelencia de nuestra comunidad.</p>
+
+            <div style="margin-top:2rem">
+                <a href="https://www.instagram.com/cee_udec/?theme=dark" target="_blank" class="btn-instagram">
+                    <i class="fab fa-instagram"></i> Síguenos en Instagram @cee_udec
                 </a>
             </div>
         </div>
-        <a href="#quienes-somos" class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </a>
-    </header>
-
-    <!-- Section: Quiénes Somos (Instagram Bio) -->
-    <section id="quienes-somos" class="section bg-white text-center">
-        <div class="container">
-            <div class="section-header">
-                <h2>Quiénes Somos</h2>
-            </div>
-            <div class="about-content">
-                <p class="lead-text">"Bienvenid@s a la comunidad del programa de economía. Trabajamos por y para
-                    impulsar nuestro programa 📊📚✨"</p>
-                <p class="mt-2">Somos el Consejo Estudiantil, un equipo dedicado a velar por el bienestar académico y la
-                    excelencia de nuestra comunidad.</p>
-
-                <!-- New Gallery Grid -->
-
-
-                <div class="social-proof mt-2" style="margin-top: 2rem;">
-                    <a href="https://www.instagram.com/cee_udec/?theme=dark" target="_blank" class="btn btn-instagram">
-                        <i class="fab fa-instagram"></i> Síguenos en Instagram @cee_udec
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section: Program Info (Credits, etc) -->
-    <section id="programa" class="section program-info">
-        <div class="container">
-            <div class="section-header">
-                <h2>Pregrado en Economía</h2>
-                <div class="line"></div>
-            </div>
-            <div class="program-stats">
-                <div class="stat-card">
-                    <i class="fas fa-clock"></i>
-                    <h3>9 Semestres</h3>
-                    <p>Duración Estimada</p>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>169 Créditos</h3>
-                    <p>Plan de Estudios</p>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-university"></i>
-                    <h3>Presencial</h3>
-                    <p><a href="https://share.google/NPLgjsZzdpgJnT9Qw" target="_blank"
-                            style="color: inherit; text-decoration: underline;">Sede Piedra Bolívar</a></p>
-                </div>
-            </div>
-
-            <!-- Official Program Details -->
-            <div class="program-details mt-2" style="margin-top: 4rem;">
-                <div class="info-grid">
-                    <div class="info-item">
-                        <h4><i class="fas fa-bullseye text-gold"></i> Misión</h4>
-                        <p>Formar economistas integrales y competentes, capaces de proponer soluciones innovadoras a la
-                            problemática social y económica desde una perspectiva local, regional, nacional e
-                            internacional, a través de un proceso curricular flexible y pertinente.</p>
-                    </div>
-                    <div class="info-item">
-                        <h4><i class="fas fa-eye text-gold"></i> Visión 2027</h4>
-                        <p>Ser un referente local, regional, nacional e internacional de alta calidad en la formación de
-                            economistas integrales y críticos, reconocido por la participación y logros de sus egresados
-                            y su contribución a la solución de problemas económicos y sociales.</p>
-                    </div>
-                </div>
-
-                <div class="profile-box mt-2"
-                    style="margin-top: 2rem; background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-sm); border-left: 5px solid var(--primary-color);">
-                    <h4 style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fas fa-user-tie"></i> Perfil
-                        del Egresado</h4>
-                    <p>El economista de la Universidad de Cartagena es un profesional capaz de formular, planificar,
-                        gestionar y evaluar políticas, modelos, acciones y proyectos sociales y económicos en el sector
-                        público y privado, con un actuar responsable y ético.</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Section: Academic Calendar (Dynamic) -->
-    <section id="calendario" class="section" style="background: var(--bg-offset); padding: 3rem 0;">
-        <div class="container">
-            <div class="section-header">
-                <h2>Calendario Académico 2026-1</h2>
-                <div class="line"></div>
-                <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto; font-size: 0.95rem;">
-                    Fechas clave para no perderse nada. <a
-                        href="resources/CALENDARIO ACADEMICO PRESENCIALES C.F. 2026.pdf" target="_blank"
-                        style="color: var(--primary-color); font-weight: 600; text-decoration: underline;">Ver PDF
-                        Oficial</a>
-                </p>
-            </div>
-
-            <div class="calendar-dashboard">
-                <!-- Countdown Card -->
-                <div class="calendar-card highlight-card">
-                    <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
-                    <h3>Próximo Evento</h3>
-                    <div class="countdown-display" id="calendar-countdown">
-                        <span class="days">00</span> días <span class="hours">00</span> hrs
-                    </div>
-                    <p id="next-event-name" class="event-label">Cargando fechas...</p>
-                </div>
-
-                <!-- Timeline Scroll -->
-                <div class="timeline-container">
-                    <div class="timeline-track" id="timeline-track">
-                        <!-- Items injected by JS -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section: Main Services Grid -->
-    <section id="servicios" class="section services-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Recursos Estudiantiles</h2>
-                <div class="line"></div>
-            </div>
-            <div class="grid-services">
-                <!-- Card: Modalidades -->
-                <div class="service-card" id="card-modalidades">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-scroll"></i>
-                    </div>
-                    <h3>Modalidades de Grado</h3>
-                    <p>Conoce las rutas: Tesis, Semilleros, Coterminales y Saber Pro.</p>
-                    <a href="#modalidades" class="link-arrow">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Card: Catalogo -->
-                <div class="service-card" id="card-catalogo">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-book-open"></i>
-                    </div>
-                    <h3>Catálogo de Cursos</h3>
-                    <p>Explora todas las asignaturas, profesores y prerrequisitos.</p>
-                    <a href="#catalogo" class="link-arrow">Buscar Materias <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Card: Parciales -->
-                <div class="service-card" id="card-parciales">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Base de Parciales</h3>
-                    <p>Accede al repositorio histórico de evaluaciones para estudiar.</p>
-                    <a href="https://drive.google.com/drive/folders/1A_Grww42HR3fXQ0PtCXot7QSDYtK-qZg?usp=drive_link"
-                        target="_blank" class="link-arrow" id="link-parciales">Ir al Repositorio <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section: Global Grade Calculator -->
-    <section id="calculadora" class="section bg-light-alt" style="background-color: #f0f4f8;">
-        <div class="container">
-            <div class="section-header">
-                <h2>Calculadora de Notas</h2>
-                <p>Proyecta tu promedio y define tu estrategia académica</p>
-                <div class="line"></div>
-            </div>
-
-            <div class="calculator-wrapper"
-                style="max-width: 600px; margin: 0 auto; background: var(--white); padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-gold);">
-                <div class="calc-grid" style="display: grid; gap: 1.5rem;">
-                    <!-- Target Grade -->
-                    <div class="calc-input-group"
-                        style="background: var(--bg-offset); padding: 1rem; border-radius: 8px; border: 1px dashed var(--primary-color);">
-                        <label
-                            style="display: block; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary-color);">🏆
-                            Nota Objetivo (¿Cuánto quieres sacar?)</label>
-                        <input type="number" id="note-target" class="form-control" placeholder="Ej: 3.0, 4.0, 4.5"
-                            value="3.0" step="0.1" min="0" max="5" inputmode="decimal"
-                            style="width: 100%; padding: 10px; border: 1px solid var(--primary-color); border-radius: 8px; font-weight: bold; text-align: center;">
-                    </div>
-
-                    <!-- Cortex 1 -->
-                    <div class="calc-input-group">
-                        <label
-                            style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary-color);">Primer
-                            Corte (30%)</label>
-                        <input type="number" id="note-c1" class="form-control" placeholder="0.0 - 5.0" step="0.1"
-                            min="0" max="5" inputmode="decimal"
-                            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
-                    </div>
-
-                    <!-- Cortex 2 -->
-                    <div class="calc-input-group">
-                        <label
-                            style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary-color);">Segundo
-                            Corte (30%)</label>
-                        <input type="number" id="note-c2" class="form-control" placeholder="0.0 - 5.0" step="0.1"
-                            min="0" max="5" inputmode="decimal"
-                            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
-                    </div>
-
-                    <!-- Cortex 3 -->
-                    <div class="calc-input-group">
-                        <label
-                            style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary-color);">Tercer
-                            Corte (40%)</label>
-                        <input type="number" id="note-c3" class="form-control"
-                            placeholder="Nota Final (Dejar vacío para calcular)" step="0.1" min="0" max="5"
-                            inputmode="decimal"
-                            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
-                    </div>
-
-                    <div class="calc-result mt-2" id="calc-result-box"
-                        style="background: var(--bg-offset); padding: 1.5rem; border-radius: var(--radius-sm); text-align: center; border: 1px solid rgba(0,0,0,0.05);">
-                        <h4 style="margin:0; font-size: 1.2rem;">Tu Promedio Actual</h4>
-                        <div id="calc-display"
-                            style="font-size: 3rem; font-weight: 700; color: var(--text-gray); font-family: 'Courier New', monospace;">
-                            ---</div>
-                        <p id="calc-feedback" style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--text-gray);">
-                            Ingresa tus notas para ver el resultado</p>
-                    </div>
-
-                    <button id="btn-calculate" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Calcular /
-                        Proyectar</button>
-                    <button id="btn-reset" class="btn btn-outline"
-                        style="width: 100%; margin-top: 0.5rem; border: 1px solid #ccc; background: transparent; padding: 0.8rem; border-radius: 50px; cursor: pointer;">Limpiar</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section: Modalidades Detail (Tabs/Accordion) -->
-    <section id="modalidades" class="section bg-light">
-        <div class="container">
-            <div class="section-header">
-                <h2>Rutas de Grado</h2>
-                <p>Elige el camino que mejor se adapte a tu perfil.</p>
-            </div>
-
-            <div class="tabs">
-                <button class="tab-btn active" data-target="investigacion">Investigación</button>
-                <button class="tab-btn" data-target="especiales">Actividades Especiales</button>
-            </div>
-
-            <div class="tab-content active" id="investigacion">
-                <div class="info-grid">
-                    <div class="info-item">
-                        <h4>Trabajo de Grado</h4>
-                        <p>Práctica bajo orientación de un asesor. Máximo 2 estudiantes. Requiere 75% de créditos
-                            aprobados.</p>
-                        <ul>
-                            <li>Propuesta</li>
-                            <li>Anteproyecto</li>
-                            <li>Informe Final</li>
-                        </ul>
-                    </div>
-                    <div class="info-item">
-                        <h4>Semillero de Investigación</h4>
-                        <p>Participación en proyectos docentes. Promedio > 3.8. Mínimo 1 año. Resultado: Artículo Q4
-                            Scopus.</p>
-                    </div>
-                    <div class="info-item">
-                        <h4>Seminario de Investigación</h4>
-                        <p>Proceso reflexivo. Evaluación por módulos y sustentación. Se pierde con 20% de inasistencia.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content" id="especiales">
-                <div class="info-grid">
-                    <div class="info-item">
-                        <h4>Cursos de Posgrado (Coterminal)</h4>
-                        <p>Adelanta créditos de maestría. Promedio > 4.0. Requiere 90% de créditos. Cupos limitados.</p>
-                    </div>
-                    <div class="info-item">
-                        <h4>Exoneración Saber Pro</h4>
-                        <p>Para la excelencia académica. Requiere estar en el top 15% del NBC de Economía a nivel
-                            nacional.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section: Catalog / Study Plan -->
-    <!-- Section: Malla Curricular 2025 -->
-    <section id="catalogo" class="section bg-light">
-        <div class="container-fluid">
-            <div class="section-header">
-                <h2>Malla Curricular</h2>
-                <div class="line"></div>
-                <button id="toggle-selection-mode" class="btn btn-outline"
-                    style="margin-top: 1rem; border-radius: 50px; font-size: 0.9rem;">
-                    <i class="far fa-square-check"></i> Generar Prematrícula
-                </button>
-            </div>
-
-            <div class="scroll-hint-wrapper">
-                <p class="scroll-hint"><i class="fas fa-hand-point-right"></i> Desliza para ver más niveles</p>
-            </div>
-            <div class="curriculum-container" style="position: relative;">
-                <!-- Desktop Arrows -->
-                <button class="scroll-arrow left" id="scrollLeftBtn" aria-label="Desplazar izquierda"><i
-                        class="fas fa-chevron-left"></i></button>
-                <button class="scroll-arrow right" id="scrollRightBtn" aria-label="Desplazar derecha"><i
-                        class="fas fa-chevron-right"></i></button>
-
-                <div class="curriculum-wrapper" id="curriculum-grid">
-                    <!-- Semester I -->
-                    <div class="semester-col">
-                        <div class="sem-header">Nivel I</div>
-                        <div class="subject-card credits-2" id="cat1"
-                            data-desc="Formación ética y valores institucionales.">Cátedra Institucional <span
-                                class="badge">2 Créditos</span></div>
-                        <div class="subject-card credits-2" id="txt1"
-                            data-desc="Desarrollo de habilidades de lectura y escritura académica.">Prod. y Comp.
-                            Textual I
-                            <span class="badge">2 Créditos</span>
-                        </div>
-                        <div class="subject-card credits-3" id="adm1"
-                            data-desc="Principios básicos de la administración.">
-                            Fund. Administración <span class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="eco1"
-                            data-desc="Introducción a los conceptos económicos fundamentales.">Fund. Economía <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="con1" data-desc="Bases de la contabilidad financiera.">
-                            Fund.
-                            Contabilidad <span class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-4" id="mat1" data-desc="Cálculo diferencial de una variable.">
-                            Matemáticas I <span class="badge">4 Créditos</span></div>
-                        <div class="subject-card credits-2" id="ing1">Inglés I <span class="badge">2 Créditos</span>
-                        </div>
-                        <div class="sem-footer">Total: 19 Créditos</div>
-                    </div>
-
-                    <!-- Semester II -->
-                    <div class="semester-col">
-                        <div class="sem-header">Nivel II</div>
-                        <div class="subject-card credits-2" id="txt2" data-prereqs="txt1"
-                            data-desc="Escritura argumentativa y ensayos.">Prod. y Comp. Textual II <span
-                                class="badge">2
-                                Créditos</span></div>
-                        <div class="subject-card credits-2" id="der1">Derecho Constitucional <span class="badge">2
-                                Créditos</span>
-                        </div>
-                        <div class="subject-card credits-3" id="his1" data-desc="Historia económica mundial.">Historia
-                            Econ.
-                            General <span class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-2" id="eti1">Ética <span class="badge">2 Créditos</span></div>
-                        <div class="subject-card credits-4" id="mat2" data-prereqs="mat1"
-                            data-desc="Cálculo integral y multivariado.">Matemáticas II <span class="badge">4
-                                Créditos</span>
-                        </div>
-                        <div class="subject-card credits-2" id="ing2" data-prereqs="ing1">Inglés II <span
-                                class="badge">2
-                                Créditos</span></div>
-                        <div class="sem-footer">Total: 15 Créditos</div>
-                    </div>
-
-                    <!-- Semester III -->
-                    <div class="semester-col">
-                        <div class="sem-header">Nivel III</div>
-                        <div class="subject-card credits-4" id="mac1" data-prereqs="eco1"
-                            data-desc="Introducción a la macroeconomía.">Macroeconomía I <span class="badge">4
-                                Créditos</span>
-                        </div>
-                        <div class="subject-card credits-3" id="mic1" data-prereqs="eco1 mat1"
-                            data-desc="Consumidor y productor.">Microeconomía I <span class="badge">3 Créditos</span>
-                        </div>
-                        <div class="subject-card credits-3" id="his2" data-prereqs="his1">Hist. Econ. Colombia <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="est1" data-prereqs="mat1"
-                            data-desc="Estadística descriptiva.">Estadística I <span class="badge">3 Créditos</span>
-                        </div>
-                        <div class="subject-card credits-3" id="emat" data-prereqs="mat2"
-                            data-desc="Álgebra lineal aplicada.">Econ. Matemática <span class="badge">3 Créditos</span>
-                        </div>
-                        <div class="subject-card credits-2" id="ing3" data-prereqs="ing2">Inglés III <span
-                                class="badge">2
-                                Créditos</span></div>
-                        <div class="sem-footer">Total: 18 Créditos</div>
-                    </div>
-
-                    <!-- Semester IV -->
-                    <div class="semester-col">
-                        <div class="sem-header">Nivel IV</div>
-                        <div class="subject-card credits-3" id="inv1" data-prereqs="est1">Fund. Inv. Científica <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-4" id="mac2" data-prereqs="mac1">Macroeconomía II <span
-                                class="badge">4 Créditos</span></div>
-                        <div class="subject-card credits-4" id="mic2" data-prereqs="mic1 emat">Microeconomía II <span
-                                class="badge">4 Créditos</span></div>
-                        <div class="subject-card credits-3" id="epo1" data-prereqs="mac1">Economía Política <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="est2" data-prereqs="est1">Estadística II <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-2" id="dat1" data-prereqs="est1">Analítica de Datos I <span
-                                class="badge">2 Créditos</span></div>
-                        <div class="subject-card credits-2" id="ing4" data-prereqs="ing3">Inglés IV <span
-                                class="badge">2
-                                Créditos</span></div>
-                        <div class="sem-footer">Total: 21 Créditos</div>
-                    </div>
-
-                    <!-- Semester V -->
-                    <div class="semester-col">
-                        <div class="sem-header">Nivel V</div>
-                        <div class="subject-card credits-3" id="inv2" data-prereqs="inv1">Investigación Aplicada <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="mac3" data-prereqs="mac2">Macroeconomía III <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="mic3" data-prereqs="mic2">Microeconomía III <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="med1" data-prereqs="est2">Téc. Medición Econ. <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="fin1" data-prereqs="con1 mat2">Finanzas Privadas I <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="ecom1" data-prereqs="est2 emat">Econometría I <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-2" id="ing5" data-prereqs="ing4">Inglés V <span class="badge">2
-                                Créditos</span></div>
-                        <div class="sem-footer">Total: 20 Créditos</div>
-                    </div>
-
-                    <!-- Semester VI -->
-                    <div class="semester-col">
-                        <div class="sem-header">Nivel VI</div>
-                        <div class="subject-card credits-3" id="reg1" data-prereqs="eco1">Econ. Regional y Local <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="pen1" data-prereqs="his2">Pensamiento Econ. I <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-2" id="dat2" data-prereqs="dat1 ecom1">Analítica de Datos II
-                            <span class="badge">2 Créditos</span>
-                        </div>
-                        <div class="subject-card credits-3" id="col1" data-prereqs="his2">Economía Colombiana <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="fin2" data-prereqs="fin1">Finanzas Privadas II <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="ecom2" data-prereqs="ecom1">Econometría II <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-2" id="hum1">Form. Humanística I <span class="badge">2
-                                Créditos</span>
-                        </div>
-                        <div class="subject-card credits-2" id="ing6" data-prereqs="ing5">Inglés VI <span
-                                class="badge">2
-                                Créditos</span></div>
-                        <div class="sem-footer">Total: 21 Créditos</div>
-                    </div>
-
-                    <!-- Semester VII -->
-                    <div class="semester-col">
-                        <div class="sem-header">Nivel VII</div>
-                        <div class="subject-card credits-3" id="pla1" data-prereqs="reg1">Planificación <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="pen2" data-prereqs="pen1">Pensamiento Econ. II <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="pub1" data-prereqs="mac3">Economía Pública <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="int1" data-prereqs="mac3 mic3">Econ. Internacional <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="pro1" data-prereqs="fin2">Form. y Eval. Proyectos <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-3" id="des1" data-prereqs="mac3">Desarrollo Económico <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-2" id="hum2">Form. Humanística II <span class="badge">2
-                                Créditos</span>
-                        </div>
-                        <div class="sem-footer">Total: 20 Créditos</div>
-                    </div>
-
-                    <!-- Semester VIII -->
-                    <div class="semester-col">
-                        <div class="sem-header">Nivel VIII</div>
-                        <div class="subject-card credits-3" id="sem1" data-prereqs="inv2">Seminario de Grado <span
-                                class="badge">3 Créditos</span></div>
-                        <div class="subject-card credits-4" id="pol1" data-prereqs="mac3">Política Macroeconómica <span
-                                class="badge">4 Créditos</span></div>
-                        <div class="subject-card credits-3" id="ele1">Electiva I <span class="badge">3 Créditos</span>
-                        </div>
-                        <div class="subject-card credits-3" id="ele2">Electiva II <span class="badge">3 Créditos</span>
-                        </div>
-                        <div class="subject-card credits-3" id="ele3">Electiva III <span class="badge">3 Créditos</span>
-                        </div>
-                        <div class="subject-card credits-2" id="mul1" data-prereqs="ecom2">Análisis Multivariado <span
-                                class="badge">2 Créditos</span></div>
-                        <div class="subject-card credits-2" id="hum3">Form. Humanística III <span class="badge">2
-                                Créditos</span>
-                        </div>
-                        <div class="sem-footer">Total: 20 Créditos</div>
-                    </div>
-
-                    <!-- Semester IX -->
-                    <div class="semester-col">
-                        <div class="sem-header">Nivel IX</div>
-                        <div class="subject-card credits-12 box-highlight" id="pra1" data-prereqs="sem1 pro1">Prácticas
-                            <span class="badge">12 Créditos</span>
-                        </div>
-                        <div class="subject-card credits-2" id="hum4">Form. Humanística IV <span class="badge">2
-                                Créditos</span>
-                        </div>
-                        <div class="sem-footer">Total: 14 Créditos</div>
-                    </div>
-                </div>
-            </div> <!-- End curriculum-container -->
-
-            <!-- Subject Details Modal -->
-            <div id="subject-modal" class="modal-overlay">
-                <div class="modal-content-card">
-                    <button class="close-modal">&times;</button>
-                    <h3 id="modal-title">Nombre Asignatura</h3>
-                    <div class="modal-badges">
-                        <span class="badge" id="modal-credits"># cr</span>
-                        <span class="badge badge-outline" id="modal-code">CODE</span>
-                        <button id="copy-code-btn" class="btn-icon-small" aria-label="Copiar código"
-                            title="Copiar código">
-                            <i class="far fa-copy"></i>
-                        </button>
-                    </div>
-                    <p id="modal-desc" class="modal-description">Descripción breve...</p>
-                    <div class="prereq-list">
-                        <h4>Requisitos:</h4>
-                        <ul id="modal-prereqs">
-                            <li>Ninguno</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section: Claustro Docente -->
-    <section id="profesores" class="section bg-white">
-        <div class="container">
-            <div class="section-header">
-                <h2>Claustro Docente</h2>
-                <div class="line"></div>
-                <p>Conoce al equipo académico que guía tu formación.</p>
-            </div>
-            <div class="professors-grid" id="professors-container">
-                <!-- Injected by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Section: Q&A -->
-    <section id="qa" class="section bg-light">
-        <div class="container">
-            <div class="section-header">
-                <h2>Preguntas Frecuentes</h2>
-            </div>
-            <div class="accordion" id="qa-container">
-                <!-- Generated by JS or static -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Section: Experience Form -->
-    <section id="experiencia" class="section highlight-section text-center">
-        <div class="container">
-            <div class="content-box">
-                <h2>Tu Voz Cuenta</h2>
-                <p>Ayúdanos a mejorar. Puedes subir material de estudio o dejarnos tus Quejas y Reclamos (PQRS).</p>
-                <div class="actions mt-2 actions-flex">
-
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzCEFzkEmnIFF0HVefl0Mw0_ye-gXigdgRmCumik9UaIr5Q/viewform"
-                        target="_blank" class="btn btn-outline-white">
-                        <i class="fas fa-bullhorn"></i> Radicar PQRS
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    </section>
-
-    <!-- Economist Quote Section -->
-    <section class="economist-quote section"
-        style="padding: 4rem 0; background: var(--bg-light); border-top: 1px solid rgba(0,0,0,0.05);">
-        <div class="container text-center">
-            <blockquote
-                style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary-color); max-width: 800px; margin: 0 auto; line-height: 1.4;">
-                <i class="fas fa-quote-left"
-                    style="color: var(--gold); font-size: 1rem; opacity: 0.5; vertical-align: top;"></i>
-                &nbsp;La economía es el estudio de la humanidad en los asuntos ordinarios de la vida.&nbsp;
-                <i class="fas fa-quote-right"
-                    style="color: var(--gold); font-size: 1rem; opacity: 0.5; vertical-align: top;"></i>
-            </blockquote>
-            <cite
-                style="display: block; margin-top: 1.5rem; color: var(--text-gray); font-style: normal; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
-                &mdash; Alfred Marshall &mdash;
-            </cite>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-col">
-                <h3>Consejo de Economía</h3>
-                <p>Universidad de Cartagena</p>
-                <p><a href="https://share.google/NPLgjsZzdpgJnT9Qw" target="_blank"
-                        style="color: inherit; text-decoration: underline;">Campus Piedra Bolívar</a></p>
-            </div>
-            <div class="footer-col">
-                <h4>Enlaces Rápidos</h4>
-                <a href="#programa">Programa</a>
-                <a href="#modalidades">Grados</a>
-                <a href="#catalogo">Catálogo</a>
-            </div>
-            <div class="footer-col">
-                <h4>Síguenos</h4>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/cee_udec/?theme=dark" target="_blank" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <!-- <a href="#"><i class="fab fa-linkedin"></i></a> -->
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Consejo de Economía - Unicartagena. Desarrollado por: <strong>Juan Pablo Diaz Tovar</strong>
-                | <a href="admin.html" style="color: inherit; opacity: 0.9; font-size: 0.85rem;"><i class="fas fa-lock"></i> Admin</a>
-            </p>
-        </div>
-    </footer>
-
-    <!-- Toast Notification -->
-    <div id="selection-toast" class="toast-notification">
-        <i class="fas fa-hand-pointer"></i> &nbsp; Toca las materias para agregarlas
     </div>
+</section>
 
-    <!-- Prematricula Floating Bar -->
-    <div id="prematricula-bar" class="floating-bar">
-        <span id="selected-count">0 materias seleccionadas</span>
-        <div class="bar-actions">
-            <button id="btn-cancel-selection" class="btn btn-outline-light btn-sm">
-                <i class="fas fa-times"></i> Cancelar
-            </button>
-            <button id="btn-open-form" class="btn btn-white btn-sm">
-                Generar Formato <i class="fas fa-arrow-right"></i>
+<!-- Live Economic Indicators -->
+<section id="indicadores" class="section" style="background:var(--primary)">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2 style="color:var(--white)!important">Indicadores Económicos en Vivo</h2>
+            <div class="line"></div>
+            <p style="color:rgba(255,255,255,.7)">Datos actualizados automáticamente desde fuentes oficiales</p>
+        </div>
+        <div class="indicators-grid" id="indicators-grid">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- Indicator Detail Modal -->
+<div id="indicator-modal" class="modal-overlay">
+    <div class="modal-content-card" style="max-width:650px">
+        <button class="close-modal" id="close-indicator-modal">&times;</button>
+        <h3 id="indicator-modal-title">Indicador</h3>
+        <div id="indicator-modal-body" style="margin-top:1rem"></div>
+    </div>
+</div>
+
+<!-- Impact Numbers -->
+<section class="section bg-white">
+    <div class="container text-center">
+        <div class="section-header reveal"><h2>Nuestro Programa en Números</h2><div class="line"></div></div>
+        <div class="impact-grid reveal">
+            <div class="impact-card"><div class="impact-number" data-target="50">0</div><div class="impact-label">Años de Trayectoria</div></div>
+            <div class="impact-card"><div class="impact-number" data-target="5000">0</div><div class="impact-label">Egresados</div></div>
+            <div class="impact-card"><div class="impact-number" data-target="35">0</div><div class="impact-label">Docentes</div></div>
+            <div class="impact-card"><div class="impact-number" data-target="12">0</div><div class="impact-label">Semilleros de Investigación</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Program Info -->
+<section id="programa" class="section">
+    <div class="container">
+        <div class="section-header reveal"><h2>Pregrado en Economía</h2><div class="line"></div></div>
+        <div class="program-stats reveal">
+            <div class="stat-card stagger-1">
+                <i class="fas fa-clock"></i>
+                <h3>9 Semestres</h3>
+                <p>Duración Estimada</p>
+            </div>
+            <div class="stat-card stagger-2">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>169 Créditos</h3>
+                <p>Plan de Estudios</p>
+            </div>
+            <div class="stat-card stagger-3">
+                <i class="fas fa-university"></i>
+                <h3>Presencial</h3>
+                <p><a href="https://share.google/NPLgjsZzdpgJnT9Qw" target="_blank" style="color:inherit;text-decoration:underline">Sede Piedra Bolívar</a></p>
+            </div>
+        </div>
+        <div class="info-grid reveal" style="margin-top:3rem">
+            <div class="info-item">
+                <h4><i class="fas fa-bullseye text-gold"></i> Misión</h4>
+                <p>Formar economistas integrales y competentes, capaces de proponer soluciones innovadoras a la problemática social y económica desde una perspectiva local, regional, nacional e internacional, a través de un proceso curricular flexible y pertinente.</p>
+            </div>
+            <div class="info-item">
+                <h4><i class="fas fa-eye text-gold"></i> Visión 2027</h4>
+                <p>Ser un referente local, regional, nacional e internacional de alta calidad en la formación de economistas integrales y críticos, reconocido por la participación y logros de sus egresados y su contribución a la solución de problemas económicos y sociales.</p>
+            </div>
+        </div>
+        <div class="reveal" style="margin-top:2rem;background:var(--white);padding:2rem;border-radius:var(--radius);box-shadow:var(--shadow-sm);border-left:4px solid var(--gold)">
+            <h4 style="color:var(--primary);margin-bottom:.8rem"><i class="fas fa-user-tie"></i> Perfil del Egresado</h4>
+            <p style="color:var(--text-gray)">El economista de la Universidad de Cartagena es un profesional capaz de formular, planificar, gestionar y evaluar políticas, modelos, acciones y proyectos sociales y económicos en el sector público y privado, con un actuar responsable y ético.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Announcements -->
+<section id="anuncios" class="section bg-white">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>Tablero de Anuncios</h2>
+            <div class="line"></div>
+            <p>Información importante del programa y el consejo</p>
+        </div>
+        <div class="announcements-feed reveal" id="announcements-feed">
+            <!-- Populated by JS from localStorage -->
+        </div>
+        <div style="text-align:center;margin-top:1.5rem">
+            <button class="btn btn-outline" id="btn-add-announcement" style="font-size:.9rem">
+                <i class="fas fa-plus-circle"></i> Publicar Anuncio (Admin)
             </button>
         </div>
     </div>
+</section>
 
-    <!-- Prematricula Data Form Modal -->
-    <div id="prematricula-modal" class="modal-overlay">
-        <div class="modal-content-card" style="max-width: 500px;">
-            <button class="close-modal" id="close-prematricula">&times;</button>
-            <h3>Datos del Estudiante</h3>
-            <p style="font-size: 0.9rem; color: var(--text-gray); margin-bottom: 1.5rem;">Estos datos se pondrán en el
-                Excel automáticamente.</p>
-
-            <form id="prematricula-form">
-                <div class="form-group" style="margin-bottom: 1rem;">
-                    <label>Apellidos</label>
-                    <input type="text" id="pm-apellidos" class="form-control" required>
-                </div>
-                <div class="form-group" style="margin-bottom: 1rem;">
-                    <label>Nombres</label>
-                    <input type="text" id="pm-nombres" class="form-control" required>
-                </div>
-                <div class="form-group" style="margin-bottom: 1rem;">
-                    <label>Código Estudiantil</label>
-                    <input type="text" id="pm-codigo" class="form-control" required>
-                </div>
-                <div class="form-group" style="margin-bottom: 1.5rem;">
-                    <label>Celular</label>
-                    <input type="tel" id="pm-celular" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-full">Descargar Excel (.xlsx)</button>
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="resources/FORMATO DE PREMATRICULA PARA EL PERIODO 2026-01.xlsx" download
-                        style="font-size: 0.85rem; color: var(--text-gray); text-decoration: underline;">
-                        O descarga el formato vacío oficial aquí
-                    </a>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Tutorial Overlay -->
-    <div id="tutorial-overlay" class="overlay-instruction">
-        <div class="overlay-content">
-            <div class="hand-animation">
-                <i class="far fa-hand-pointer"></i>
+<!-- Announcement Modal -->
+<div id="announcement-modal" class="modal-overlay">
+    <div class="modal-content-card" style="max-width:550px">
+        <button class="close-modal" id="close-announcement-modal">&times;</button>
+        <h3>Publicar Anuncio</h3>
+        <p style="font-size:.9rem;color:var(--text-gray);margin-bottom:1.5rem">Ingresa la contraseña del consejo para publicar.</p>
+        <form id="announcement-form">
+            <div style="margin-bottom:1rem">
+                <label style="display:block;font-weight:600;margin-bottom:.3rem;font-size:.9rem">Contraseña Admin</label>
+                <input type="password" id="ann-password" class="form-control" required placeholder="Contraseña">
             </div>
-            <h3>Modo Selección</h3>
-            <p>Toca las materias que deseas matricular para agregarlas a tu lista.</p>
-            <button id="btn-close-tutorial" class="btn btn-primary">Entendido</button>
+            <div style="margin-bottom:1rem">
+                <label style="display:block;font-weight:600;margin-bottom:.3rem;font-size:.9rem">Título</label>
+                <input type="text" id="ann-title" class="form-control" required placeholder="Ej: Cambio de horario Econometría I">
+            </div>
+            <div style="margin-bottom:1rem">
+                <label style="display:block;font-weight:600;margin-bottom:.3rem;font-size:.9rem">Mensaje</label>
+                <textarea id="ann-body" class="form-control" rows="4" required placeholder="Escribe el anuncio completo..." style="resize:vertical"></textarea>
+            </div>
+            <div style="margin-bottom:1rem">
+                <label style="display:block;font-weight:600;margin-bottom:.3rem;font-size:.9rem">Subir Imagen (Opcional)</label>
+                <input type="file" id="ann-image" class="form-control" accept="image/*">
+                <p style="font-size:.75rem;color:var(--text-gray);margin-top:.2rem">Se comprimirá automáticamente para optimizar el espacio.</p>
+            </div>
+            <div style="margin-bottom:1rem">
+                <label style="display:block;font-weight:600;margin-bottom:.3rem;font-size:.9rem">Enlace Externo (Opcional)</label>
+                <input type="url" id="ann-link" class="form-control" placeholder="Ej: https://universidad.edu.co/noticia">
+            </div>
+            <div style="margin-bottom:1.5rem">
+                <label style="display:flex;align-items:center;gap:.5rem;font-size:.9rem;cursor:pointer">
+                    <input type="checkbox" id="ann-pinned"> <strong>📌 Fijar como importante</strong>
+                </label>
+            </div>
+            <button type="submit" class="btn-full">Publicar Anuncio</button>
+        </form>
+    </div>
+</div>
+
+<!-- Calendar -->
+<section id="calendario" class="section" style="background:var(--bg-offset)">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>Calendario Académico</h2>
+            <div class="line"></div>
+            <p>Fechas clave para no perderse nada. <a href="resources/CALENDARIO ACADEMICO PRESENCIALES C.F. 2026.pdf" target="_blank" style="color:var(--gold);font-weight:600;text-decoration:underline">Ver PDF Oficial</a></p>
+            <button class="btn btn-outline" id="btn-add-calendar-event" style="margin-top:1rem;font-size:.85rem">
+                <i class="fas fa-plus"></i> Agregar Evento (Admin)
+            </button>
+        </div>
+        <div class="calendar-dashboard reveal">
+            <div class="calendar-card highlight-card">
+                <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
+                <h3>Próximo Evento</h3>
+                <div class="countdown-display" id="calendar-countdown"><span class="days">00</span> días <span class="hours">00</span> hrs</div>
+                <p id="next-event-name" class="event-label">Cargando fechas...</p>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-track" id="timeline-track"></div>
+            </div>
         </div>
     </div>
+</section>
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTop" class="scroll-top-btn" aria-label="Volver arriba">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+<!-- Calendar Event Modal -->
+<div id="calendar-modal" class="modal-overlay">
+    <div class="modal-content-card" style="max-width:480px">
+        <button class="close-modal" id="close-calendar-modal">&times;</button>
+        <h3>Agregar Evento al Calendario</h3>
+        <form id="calendar-form">
+            <div style="margin-bottom:1rem">
+                <label style="display:block;font-weight:600;margin-bottom:.3rem;font-size:.9rem">Contraseña Admin</label>
+                <input type="password" id="cal-password" class="form-control" required placeholder="Contraseña">
+            </div>
+            <div style="margin-bottom:1rem">
+                <label style="display:block;font-weight:600;margin-bottom:.3rem;font-size:.9rem">Nombre del Evento</label>
+                <input type="text" id="cal-title" class="form-control" required placeholder="Ej: Parcial Microeconomía II">
+            </div>
+            <div style="margin-bottom:1rem">
+                <label style="display:block;font-weight:600;margin-bottom:.3rem;font-size:.9rem">Fecha</label>
+                <input type="date" id="cal-date" class="form-control" required>
+            </div>
+            <div style="margin-bottom:1.5rem">
+                <label style="display:block;font-weight:600;margin-bottom:.3rem;font-size:.9rem">Icono</label>
+                <select id="cal-icon" class="form-control">
+                    <option value="fa-calendar-day">📅 General</option>
+                    <option value="fa-edit">📝 Parcial</option>
+                    <option value="fa-flag-checkered">🏁 Final</option>
+                    <option value="fa-bullhorn">📢 Evento</option>
+                    <option value="fa-graduation-cap">🎓 Graduación</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-full">Agregar al Calendario</button>
+        </form>
+    </div>
+</div>
+<!-- Services -->
+<section id="servicios" class="section services-section">
+    <div class="container">
+        <div class="section-header reveal"><h2>Recursos Estudiantiles</h2><div class="line"></div></div>
+        <div class="grid-services reveal">
+            <div class="service-card stagger-1" id="card-modalidades">
+                <div class="icon-wrapper"><i class="fas fa-scroll"></i></div>
+                <h3>Modalidades de Grado</h3>
+                <p>Conoce las rutas: Tesis, Semilleros, Coterminales y Saber Pro.</p>
+                <a href="#modalidades" class="link-arrow">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card stagger-2" id="card-catalogo">
+                <div class="icon-wrapper"><i class="fas fa-book-open"></i></div>
+                <h3>Catálogo de Cursos</h3>
+                <p>Explora todas las asignaturas, profesores y prerrequisitos.</p>
+                <a href="#catalogo" class="link-arrow">Buscar Materias <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card stagger-3" id="card-parciales">
+                <div class="icon-wrapper"><i class="fas fa-database"></i></div>
+                <h3>Base de Parciales</h3>
+                <p>Accede al repositorio histórico de evaluaciones para estudiar.</p>
+                <a href="https://drive.google.com/drive/folders/1A_Grww42HR3fXQ0PtCXot7QSDYtK-qZg?usp=drive_link" target="_blank" class="link-arrow" id="link-parciales">Ir al Repositorio <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- SheetJS for Excel Export -->
-    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
-    <script src="assets/js/subjects_data.js"></script>
-    <script src="assets/js/main.js"></script>
+<!-- Econometrics Tools -->
+<section id="herramientas" class="section bg-white">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>Herramientas Académicas</h2>
+            <div class="line"></div>
+            <p>Recursos para todas las áreas de tu formación: econometría, microeconomía, macroeconomía, pensamiento económico e historia</p>
+        </div>
+        <div class="tools-grid reveal">
+            <div class="tool-card" id="tool-ols">
+                <div class="tool-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Regresión OLS (MCO)</h3>
+                <p>Regresión lineal por Mínimos Cuadrados Ordinarios. Ingresa datos y obtén coeficientes, R², t-stats y diagnósticos.</p>
+                <span class="link-arrow" style="margin-top:1rem">Abrir Simulador <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="tool-card" id="tool-probit">
+                <div class="tool-icon"><i class="fas fa-wave-square"></i></div>
+                <h3>Modelos Probit & Logit</h3>
+                <p>Visualiza y compara las CDFs. Comprende los efectos marginales en modelos de elección discreta.</p>
+                <span class="link-arrow" style="margin-top:1rem">Explorar <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="tool-card" id="tool-distributions">
+                <div class="tool-icon"><i class="fas fa-bell"></i></div>
+                <h3>Distribuciones Estadísticas</h3>
+                <p>Normal, t-Student, Chi², F de Fisher. Calcula valores críticos y p-values interactivamente.</p>
+                <span class="link-arrow" style="margin-top:1rem">Visualizar <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="tool-card" id="tool-references">
+                <div class="tool-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Cheat Sheets: R, Stata, Python</h3>
+                <p>Guías rápidas de comandos en los lenguajes que usamos en la carrera.</p>
+                <span class="link-arrow" style="margin-top:1rem">Ver Guías <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="tool-card" id="tool-concepts">
+                <div class="tool-icon"><i class="fas fa-brain"></i></div>
+                <h3>Glosario de Economía</h3>
+                <p>Micro, macro, equilibrio general y parcial, pensamiento económico, historia. Conceptos del plan de estudios.</p>
+                <span class="link-arrow" style="margin-top:1rem">Consultar <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="tool-card" id="tool-hypothesis">
+                <div class="tool-icon"><i class="fas fa-vial"></i></div>
+                <h3>Pruebas de Hipótesis</h3>
+                <p>Calculadora interactiva de pruebas t, F, Chi² con interpretación automática de resultados.</p>
+                <span class="link-arrow" style="margin-top:1rem">Calcular <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="tool-card" id="tool-micro">
+                <div class="tool-icon"><i class="fas fa-balance-scale"></i></div>
+                <h3>Simulador Microeconómico</h3>
+                <p>Oferta y demanda interactiva. Mueve curvas, calcula equilibrio, excedentes y peso muerto con impuestos.</p>
+                <span class="link-arrow" style="margin-top:1rem">Simular <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="tool-card" id="tool-macro">
+                <div class="tool-icon"><i class="fas fa-university"></i></div>
+                <h3>Simulador Macroeconómico</h3>
+                <p>Modelo IS-LM interactivo. Ajusta política fiscal y monetaria, observa cómo se mueven r e Y en equilibrio.</p>
+                <span class="link-arrow" style="margin-top:1rem">Simular <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="tool-card" id="tool-timeseries">
+                <div class="tool-icon"><i class="fas fa-chart-area"></i></div>
+                <h3>Series de Tiempo</h3>
+                <p>Modelos AR, MA, ARIMA y VAR. Visualiza autocorrelación y estima modelos autoregresivos.</p>
+                <span class="link-arrow" style="margin-top:1rem">Explorar <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="tool-card" id="tool-history">
+                <div class="tool-icon"><i class="fas fa-landmark"></i></div>
+                <h3>Líneas del Tiempo Económicas</h3>
+                <p>Historia económica general y de Colombia. Pensadores, crisis y transformaciones desde los clásicos hasta hoy.</p>
+                <span class="link-arrow" style="margin-top:1rem">Explorar <i class="fas fa-arrow-right"></i></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tool Modals Container -->
+<div id="tool-modal" class="modal-overlay">
+    <div class="modal-content-card" style="max-width:700px;max-height:85vh;overflow-y:auto">
+        <button class="close-modal" id="close-tool-modal">&times;</button>
+        <div id="tool-modal-content"></div>
+    </div>
+</div>
+
+<!-- Grade Calculator -->
+<section id="calculadora" class="section" style="background:var(--bg-offset)">
+    <div class="container">
+        <div class="section-header reveal"><h2>Calculadora de Notas</h2><p>Proyecta tu promedio y define tu estrategia académica</p><div class="line"></div></div>
+        <div class="calculator-wrapper reveal">
+            <div class="calc-grid">
+                <div class="calc-target-group">
+                    <label>🏆 Nota Objetivo (¿Cuánto quieres sacar?)</label>
+                    <input type="number" id="note-target" class="form-control" placeholder="Ej: 3.0, 4.0" value="3.0" step="0.1" min="0" max="5" inputmode="decimal" style="text-align:center;font-weight:bold">
+                </div>
+                <div class="calc-input-group">
+                    <label>Primer Corte (30%)</label>
+                    <input type="number" id="note-c1" class="form-control" placeholder="0.0 - 5.0" step="0.1" min="0" max="5" inputmode="decimal">
+                </div>
+                <div class="calc-input-group">
+                    <label>Segundo Corte (30%)</label>
+                    <input type="number" id="note-c2" class="form-control" placeholder="0.0 - 5.0" step="0.1" min="0" max="5" inputmode="decimal">
+                </div>
+                <div class="calc-input-group">
+                    <label>Tercer Corte (40%)</label>
+                    <input type="number" id="note-c3" class="form-control" placeholder="Dejar vacío para calcular" step="0.1" min="0" max="5" inputmode="decimal">
+                </div>
+                <div class="calc-result" id="calc-result-box">
+                    <h4 style="margin:0;font-size:1.1rem">Tu Promedio Actual</h4>
+                    <div id="calc-display" style="font-size:3rem;font-weight:700;color:var(--text-gray);font-family:'JetBrains Mono',monospace">---</div>
+                    <p id="calc-feedback" style="font-size:.9rem;margin-top:.5rem;color:var(--text-gray)">Ingresa tus notas para ver el resultado</p>
+                </div>
+                <button id="btn-calculate" class="btn btn-primary" style="width:100%">Calcular / Proyectar</button>
+                <button id="btn-reset" class="btn btn-outline" style="width:100%">Limpiar</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modalidades -->
+<section id="modalidades" class="section bg-light">
+    <div class="container">
+        <div class="section-header reveal"><h2>Rutas de Grado</h2><p>Elige el camino que mejor se adapte a tu perfil.</p></div>
+        <div class="tabs reveal">
+            <button class="tab-btn active" data-target="investigacion">Investigación</button>
+            <button class="tab-btn" data-target="especiales">Actividades Especiales</button>
+        </div>
+        <div class="tab-content active" id="investigacion">
+            <div class="info-grid">
+                <div class="info-item"><h4>Trabajo de Grado</h4><p>Práctica bajo orientación de un asesor. Máximo 2 estudiantes. Requiere 75% de créditos aprobados.</p><ul><li>Propuesta</li><li>Anteproyecto</li><li>Informe Final</li></ul></div>
+                <div class="info-item"><h4>Semillero de Investigación</h4><p>Participación en proyectos docentes. Promedio > 3.8. Mínimo 1 año. Resultado: Artículo Q4 Scopus.</p></div>
+                <div class="info-item"><h4>Seminario de Investigación</h4><p>Proceso reflexivo. Evaluación por módulos y sustentación. Se pierde con 20% de inasistencia.</p></div>
+            </div>
+        </div>
+        <div class="tab-content" id="especiales">
+            <div class="info-grid">
+                <div class="info-item"><h4>Cursos de Posgrado (Coterminal)</h4><p>Adelanta créditos de maestría. Promedio > 4.0. Requiere 90% de créditos. Cupos limitados.</p></div>
+                <div class="info-item"><h4>Exoneración Saber Pro</h4><p>Para la excelencia académica. Requiere estar en el top 15% del NBC de Economía a nivel nacional.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Malla Curricular -->
+<section id="catalogo" class="section bg-light">
+    <div class="container-fluid">
+        <div class="section-header reveal">
+            <h2>Malla Curricular</h2><div class="line"></div>
+            <button id="toggle-selection-mode" class="btn btn-outline" style="margin-top:1rem;border-radius:50px;font-size:.9rem">
+                <i class="far fa-square-check"></i> Generar Prematrícula
+            </button>
+        </div>
+        <div class="scroll-hint-wrapper"><p class="scroll-hint"><i class="fas fa-hand-point-right"></i> Desliza para ver más niveles</p></div>
+        <div class="curriculum-container">
+            <button class="scroll-arrow left" id="scrollLeftBtn" aria-label="Desplazar izquierda"><i class="fas fa-chevron-left"></i></button>
+            <button class="scroll-arrow right" id="scrollRightBtn" aria-label="Desplazar derecha"><i class="fas fa-chevron-right"></i></button>
+            <div class="curriculum-wrapper" id="curriculum-grid">
+                <!-- Nivel I -->
+                <div class="semester-col"><div class="sem-header">Nivel I</div>
+                    <div class="subject-card credits-2" id="cat1" data-desc="Formación ética y valores institucionales.">Cátedra Institucional <span class="badge">2 Cr</span></div>
+                    <div class="subject-card credits-2" id="txt1" data-desc="Desarrollo de habilidades de lectura y escritura académica.">Prod. y Comp. Textual I <span class="badge">2 Cr</span></div>
+                    <div class="subject-card credits-3" id="adm1" data-desc="Principios básicos de la administración.">Fund. Administración <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="eco1" data-desc="Introducción a los conceptos económicos fundamentales.">Fund. Economía <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="con1" data-desc="Bases de la contabilidad financiera.">Fund. Contabilidad <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-4" id="mat1" data-desc="Cálculo diferencial de una variable.">Matemáticas I <span class="badge">4 Cr</span></div>
+                    <div class="subject-card credits-2" id="ing1">Inglés I <span class="badge">2 Cr</span></div>
+                    <div class="sem-footer">Total: 19 Créditos</div>
+                </div>
+                <!-- Nivel II -->
+                <div class="semester-col"><div class="sem-header">Nivel II</div>
+                    <div class="subject-card credits-2" id="txt2" data-prereqs="txt1" data-desc="Escritura argumentativa y ensayos.">Prod. y Comp. Textual II <span class="badge">2 Cr</span></div>
+                    <div class="subject-card credits-2" id="der1">Derecho Constitucional <span class="badge">2 Cr</span></div>
+                    <div class="subject-card credits-3" id="his1" data-desc="Historia económica mundial.">Historia Econ. General <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-2" id="eti1">Ética <span class="badge">2 Cr</span></div>
+                    <div class="subject-card credits-4" id="mat2" data-prereqs="mat1" data-desc="Cálculo integral y multivariado.">Matemáticas II <span class="badge">4 Cr</span></div>
+                    <div class="subject-card credits-2" id="ing2" data-prereqs="ing1">Inglés II <span class="badge">2 Cr</span></div>
+                    <div class="sem-footer">Total: 15 Créditos</div>
+                </div>
+                <!-- Nivel III -->
+                <div class="semester-col"><div class="sem-header">Nivel III</div>
+                    <div class="subject-card credits-4" id="mac1" data-prereqs="eco1" data-desc="Introducción a la macroeconomía.">Macroeconomía I <span class="badge">4 Cr</span></div>
+                    <div class="subject-card credits-3" id="mic1" data-prereqs="eco1 mat1" data-desc="Consumidor y productor.">Microeconomía I <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="his2" data-prereqs="his1">Hist. Econ. Colombia <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="est1" data-prereqs="mat1" data-desc="Estadística descriptiva.">Estadística I <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="emat" data-prereqs="mat2" data-desc="Álgebra lineal aplicada.">Econ. Matemática <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-2" id="ing3" data-prereqs="ing2">Inglés III <span class="badge">2 Cr</span></div>
+                    <div class="sem-footer">Total: 18 Créditos</div>
+                </div>
+                <!-- Nivel IV -->
+                <div class="semester-col"><div class="sem-header">Nivel IV</div>
+                    <div class="subject-card credits-3" id="inv1" data-prereqs="est1">Fund. Inv. Científica <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-4" id="mac2" data-prereqs="mac1">Macroeconomía II <span class="badge">4 Cr</span></div>
+                    <div class="subject-card credits-4" id="mic2" data-prereqs="mic1 emat">Microeconomía II <span class="badge">4 Cr</span></div>
+                    <div class="subject-card credits-3" id="epo1" data-prereqs="mac1">Economía Política <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="est2" data-prereqs="est1">Estadística II <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-2" id="dat1" data-prereqs="est1">Analítica de Datos I <span class="badge">2 Cr</span></div>
+                    <div class="subject-card credits-2" id="ing4" data-prereqs="ing3">Inglés IV <span class="badge">2 Cr</span></div>
+                    <div class="sem-footer">Total: 21 Créditos</div>
+                </div>
+                <!-- Nivel V -->
+                <div class="semester-col"><div class="sem-header">Nivel V</div>
+                    <div class="subject-card credits-3" id="inv2" data-prereqs="inv1">Investigación Aplicada <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="mac3" data-prereqs="mac2">Macroeconomía III <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="mic3" data-prereqs="mic2">Microeconomía III <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="med1" data-prereqs="est2">Téc. Medición Econ. <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="fin1" data-prereqs="con1 mat2">Finanzas Privadas I <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="ecom1" data-prereqs="est2 emat" data-desc="Modelos de regresión, MCO, pruebas de hipótesis.">Econometría I <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-2" id="ing5" data-prereqs="ing4">Inglés V <span class="badge">2 Cr</span></div>
+                    <div class="sem-footer">Total: 20 Créditos</div>
+                </div>
+                <!-- Nivel VI -->
+                <div class="semester-col"><div class="sem-header">Nivel VI</div>
+                    <div class="subject-card credits-3" id="reg1" data-prereqs="eco1">Econ. Regional y Local <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="pen1" data-prereqs="his2">Pensamiento Econ. I <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-2" id="dat2" data-prereqs="dat1 ecom1">Analítica de Datos II <span class="badge">2 Cr</span></div>
+                    <div class="subject-card credits-3" id="col1" data-prereqs="his2">Economía Colombiana <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="fin2" data-prereqs="fin1">Finanzas Privadas II <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="ecom2" data-prereqs="ecom1" data-desc="Modelos Probit, Logit, Series de tiempo, Panel.">Econometría II <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-2" id="hum1">Form. Humanística I <span class="badge">2 Cr</span></div>
+                    <div class="subject-card credits-2" id="ing6" data-prereqs="ing5">Inglés VI <span class="badge">2 Cr</span></div>
+                    <div class="sem-footer">Total: 21 Créditos</div>
+                </div>
+                <!-- Nivel VII -->
+                <div class="semester-col"><div class="sem-header">Nivel VII</div>
+                    <div class="subject-card credits-3" id="pla1" data-prereqs="reg1">Planificación <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="pen2" data-prereqs="pen1">Pensamiento Econ. II <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="pub1" data-prereqs="mac3">Economía Pública <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="int1" data-prereqs="mac3 mic3">Econ. Internacional <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="pro1" data-prereqs="fin2">Form. y Eval. Proyectos <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="des1" data-prereqs="mac3">Desarrollo Económico <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-2" id="hum2">Form. Humanística II <span class="badge">2 Cr</span></div>
+                    <div class="sem-footer">Total: 20 Créditos</div>
+                </div>
+                <!-- Nivel VIII -->
+                <div class="semester-col"><div class="sem-header">Nivel VIII</div>
+                    <div class="subject-card credits-3" id="sem1" data-prereqs="inv2">Seminario de Grado <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-4" id="pol1" data-prereqs="mac3">Política Macroeconómica <span class="badge">4 Cr</span></div>
+                    <div class="subject-card credits-3" id="ele1">Electiva I <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="ele2">Electiva II <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-3" id="ele3">Electiva III <span class="badge">3 Cr</span></div>
+                    <div class="subject-card credits-2" id="mul1" data-prereqs="ecom2" data-desc="Análisis multivariado y técnicas avanzadas.">Análisis Multivariado <span class="badge">2 Cr</span></div>
+                    <div class="subject-card credits-2" id="hum3">Form. Humanística III <span class="badge">2 Cr</span></div>
+                    <div class="sem-footer">Total: 20 Créditos</div>
+                </div>
+                <!-- Nivel IX -->
+                <div class="semester-col"><div class="sem-header">Nivel IX</div>
+                    <div class="subject-card credits-12 box-highlight" id="pra1" data-prereqs="sem1 pro1">Prácticas <span class="badge">12 Cr</span></div>
+                    <div class="subject-card credits-2" id="hum4">Form. Humanística IV <span class="badge">2 Cr</span></div>
+                    <div class="sem-footer">Total: 14 Créditos</div>
+                </div>
+            </div>
+        </div>
+        <!-- Subject Modal -->
+        <div id="subject-modal" class="modal-overlay">
+            <div class="modal-content-card">
+                <button class="close-modal">&times;</button>
+                <h3 id="modal-title">Nombre Asignatura</h3>
+                <div class="modal-badges">
+                    <span class="badge" id="modal-credits"># cr</span>
+                    <span class="badge badge-outline" id="modal-code">CODE</span>
+                    <button id="copy-code-btn" class="btn-icon-small" aria-label="Copiar código" title="Copiar código"><i class="far fa-copy"></i></button>
+                </div>
+                <p id="modal-desc" class="modal-description">Descripción breve...</p>
+                <div class="prereq-list"><h4>Requisitos:</h4><ul id="modal-prereqs"><li>Ninguno</li></ul></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Professors -->
+<section id="profesores" class="section bg-white">
+    <div class="container">
+        <div class="section-header reveal"><h2>Claustro Docente</h2><div class="line"></div><p>Conoce al equipo académico que guía tu formación.</p></div>
+        <div class="professors-grid" id="professors-container"></div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="qa" class="section bg-light">
+    <div class="container">
+        <div class="section-header reveal"><h2>Preguntas Frecuentes</h2><div class="line"></div></div>
+        <div class="accordion reveal" id="qa-container"></div>
+    </div>
+</section>
+
+<!-- Experience -->
+<section id="experiencia" class="section highlight-section text-center">
+    <div class="container">
+        <div class="content-box reveal">
+            <h2>Tu Voz Cuenta</h2>
+            <p style="color:rgba(255,255,255,.8);max-width:600px;margin:0 auto">Ayúdanos a mejorar. Puedes dejarnos tus Quejas, Peticiones, Reclamos y Sugerencias.</p>
+            <div class="actions-flex">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNzCEFzkEmnIFF0HVefl0Mw0_ye-gXigdgRmCumik9UaIr5Q/viewform" target="_blank" class="btn btn-outline-white"><i class="fas fa-bullhorn"></i> Radicar PQRS</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quote -->
+<section class="economist-quote section text-center">
+    <div class="container">
+        <blockquote class="reveal">
+            <i class="fas fa-quote-left" style="color:var(--gold);font-size:.9rem;opacity:.5;vertical-align:top"></i>
+            &nbsp;La economía es el estudio de la humanidad en los asuntos ordinarios de la vida.&nbsp;
+            <i class="fas fa-quote-right" style="color:var(--gold);font-size:.9rem;opacity:.5;vertical-align:top"></i>
+        </blockquote>
+        <cite class="reveal">&mdash; Alfred Marshall &mdash;</cite>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container footer-content">
+        <div class="footer-col"><h3>Consejo de Economía</h3><p>Universidad de Cartagena</p><p><a href="https://share.google/NPLgjsZzdpgJnT9Qw" target="_blank" style="color:inherit;text-decoration:underline">Campus Piedra Bolívar</a></p></div>
+        <div class="footer-col"><h4>Enlances Rápidos</h4><a href="#programa">Programa</a><a href="#modalidades">Grados</a><a href="#catalogo">Catálogo</a><a href="#herramientas">Herramientas</a><a href="#anuncios">Anuncios</a></div>
+        <div class="footer-col"><h4>Síguenos</h4><div class="social-links"><a href="https://www.instagram.com/cee_udec/?theme=dark" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Consejo de Economía - Unicartagena. Desarrollado por: <strong>Juan Pablo Diaz Tovar</strong> | <a href="admin.html" style="color:inherit;opacity:.9;font-size:.85rem"><i class="fas fa-lock"></i> Admin</a></p></div>
+</footer>
+
+<!-- Toast -->
+<div id="selection-toast" class="toast-notification"><i class="fas fa-hand-pointer"></i> &nbsp; Toca las materias para agregarlas</div>
+
+<!-- Prematricula Bar -->
+<div id="prematricula-bar" class="floating-bar">
+    <span id="selected-count">0 materias seleccionadas</span>
+    <div class="bar-actions">
+        <button id="btn-cancel-selection" class="btn btn-outline-light btn-sm"><i class="fas fa-times"></i> Cancelar</button>
+        <button id="btn-open-form" class="btn btn-white btn-sm">Generar Formato <i class="fas fa-arrow-right"></i></button>
+    </div>
+</div>
+
+<!-- Prematricula Modal -->
+<div id="prematricula-modal" class="modal-overlay">
+    <div class="modal-content-card" style="max-width:500px">
+        <button class="close-modal" id="close-prematricula">&times;</button>
+        <h3>Datos del Estudiante</h3>
+        <p style="font-size:.9rem;color:var(--text-gray);margin-bottom:1.5rem">Estos datos se pondrán en el Excel automáticamente.</p>
+        <form id="prematricula-form">
+            <div style="margin-bottom:1rem"><label style="display:block;font-weight:600;margin-bottom:.3rem">Apellidos</label><input type="text" id="pm-apellidos" class="form-control" required></div>
+            <div style="margin-bottom:1rem"><label style="display:block;font-weight:600;margin-bottom:.3rem">Nombres</label><input type="text" id="pm-nombres" class="form-control" required></div>
+            <div style="margin-bottom:1rem"><label style="display:block;font-weight:600;margin-bottom:.3rem">Código Estudiantil</label><input type="text" id="pm-codigo" class="form-control" required></div>
+            <div style="margin-bottom:1.5rem"><label style="display:block;font-weight:600;margin-bottom:.3rem">Celular</label><input type="tel" id="pm-celular" class="form-control" required></div>
+            <button type="submit" class="btn-full">Descargar Excel (.xlsx)</button>
+            <div style="text-align:center;margin-top:1rem"><a href="resources/FORMATO DE PREMATRICULA PARA EL PERIODO 2026-01.xlsx" download style="font-size:.85rem;color:var(--text-gray);text-decoration:underline">O descarga el formato vacío oficial aquí</a></div>
+        </form>
+    </div>
+</div>
+
+<!-- Tutorial Overlay -->
+<div id="tutorial-overlay" class="overlay-instruction">
+    <div class="overlay-content">
+        <div class="hand-animation"><i class="far fa-hand-pointer"></i></div>
+        <h3>Modo Selección</h3>
+        <p>Toca las materias que deseas matricular para agregarlas a tu lista.</p>
+        <button id="btn-close-tutorial" class="btn btn-primary">Entendido</button>
+    </div>
+</div>
+
+<!-- Scroll to Top -->
+<button id="scrollToTop" class="scroll-top-btn" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Scripts -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="assets/js/subjects_data.js?v=10"></script>
+<script src="assets/js/indicators.js?v=10"></script>
+<script src="assets/js/main.js?v=11"></script>
 </body>
-
 </html>
