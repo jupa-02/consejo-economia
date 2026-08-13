@@ -5,16 +5,16 @@
  */
 
 const EconIndicators = (() => {
-    const CACHE_KEY = 'econ_indicators_cache_v2';
+    const CACHE_KEY = 'econ_indicators_cache_v3';
     const CACHE_TTL = 3600000; // 1 hour
 
     // Fallback data if API fails
     const FALLBACK = {
-        trm: { value: 4250, change: 0.3, trend: [4100, 4150, 4180, 4200, 4220, 4250], labels: ['1 may 2024', '2 may 2024', '3 may 2024', '4 may 2024', '5 may 2024', '6 may 2024'] },
-        ipc: { value: 5.10, change: -0.2, trend: [5.8, 5.6, 5.4, 5.3, 5.2, 5.1], labels: ['dic 2023', 'ene 2024', 'feb 2024', 'mar 2024', 'abr 2024', 'may 2024'] },
-        desempleo: { value: 9.1, change: -0.5, trend: [10.2, 9.8, 9.6, 9.4, 9.2, 9.1], labels: ['dic 2023', 'ene 2024', 'feb 2024', 'mar 2024', 'abr 2024', 'may 2024'] },
-        pib: { value: 1.7, change: 0.3, trend: [1.1, 1.2, 1.3, 1.4, 1.5, 1.7], labels: ['Q4 2022', 'Q1 2023', 'Q2 2023', 'Q3 2023', 'Q4 2023', 'Q1 2024'] },
-        tasaBanrep: { value: 9.50, change: -0.75, trend: [11.75, 11.25, 10.75, 10.25, 9.75, 9.50], labels: ['dic 2023', 'ene 2024', 'feb 2024', 'mar 2024', 'abr 2024', 'may 2024'] }
+        trm: { value: 4250, change: 0.3, trend: [4100, 4150, 4180, 4200, 4220, 4250], labels: ['1 ago 2026', '2 ago 2026', '3 ago 2026', '4 ago 2026', '5 ago 2026', '6 ago 2026'] },
+        ipc: { value: 6.03, change: -0.11, trend: [7.2, 7.0, 6.8, 6.4, 6.14, 6.03], labels: ['feb 2026', 'mar 2026', 'abr 2026', 'may 2026', 'jun 2026', 'jul 2026'] },
+        desempleo: { value: 9.5, change: 0.4, trend: [10.2, 9.8, 9.6, 9.4, 9.1, 9.5], labels: ['feb 2026', 'mar 2026', 'abr 2026', 'may 2026', 'jun 2026', 'jul 2026'] },
+        pib: { value: 2.1, change: 0.4, trend: [1.1, 1.2, 1.3, 1.4, 1.7, 2.1], labels: ['Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025', 'Q1 2026', 'Q2 2026'] },
+        tasaBanrep: { value: 12.00, change: 0.00, trend: [13.25, 13.00, 12.75, 12.25, 12.00, 12.00], labels: ['feb 2026', 'mar 2026', 'abr 2026', 'may 2026', 'jun 2026', 'jul 2026'] }
     };
 
     function getCache() {
