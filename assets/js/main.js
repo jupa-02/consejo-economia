@@ -728,7 +728,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toolTemplates = {
         'tool-ols': { title: 'Simulador OLS (MCO)', html: `<h3>Regresión por Mínimos Cuadrados Ordinarios</h3><p style="color:var(--text-gray);margin:1rem 0">Ingresa pares de datos (X, Y) separados por coma, uno por línea.</p><textarea id="ols-data" class="form-control" rows="6" placeholder="1, 2.5\n2, 4.1\n3, 5.8\n4, 7.2\n5, 9.0" style="font-family:'JetBrains Mono',monospace;font-size:.9rem;resize:vertical"></textarea><button class="btn btn-primary" style="width:100%;margin-top:1rem" onclick="runOLS()">Estimar Modelo</button><div id="ols-results" style="margin-top:1.5rem"></div>` },
         'tool-probit': { title: 'Modelos Probit & Logit', html: `<h3>Visualización Probit vs Logit</h3><p style="color:var(--text-gray);margin:1rem 0">Compara las funciones de distribución acumulada.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0"><div><label style="font-weight:600;font-size:.85rem">Media (μ)</label><input type="number" id="pl-mean" class="form-control" value="0" step="0.1"></div><div><label style="font-weight:600;font-size:.85rem">Desv. Estándar (σ)</label><input type="number" id="pl-sd" class="form-control" value="1" step="0.1" min="0.1"></div></div><canvas id="probit-canvas" style="width:100%;height:250px;margin-top:1rem"></canvas><button class="btn btn-primary" style="width:100%;margin-top:1rem" onclick="drawProbitLogit()">Graficar</button><div style="margin-top:1rem;font-size:.85rem;color:var(--text-gray)"><p><strong>Probit:</strong> Φ(x) = CDF Normal estándar</p><p><strong>Logit:</strong> Λ(x) = 1/(1+e⁻ˣ)</p></div>` },
-        'tool-distributions': { title: 'Distribuciones Estadísticas', html: `<h3>Calculadora de Distribuciones</h3><div style="margin:1rem 0"><label style="font-weight:600;font-size:.85rem">Distribución</label><select id="dist-type" class="form-control"><option value="normal">Normal (Z)</option><option value="t">t-Student</option><option value="chi2">Chi-cuadrado</option></select></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem"><div><label style="font-weight:600;font-size:.85rem">Valor</label><input type="number" id="dist-value" class="form-control" value="1.96" step="0.01"></div><div><label style="font-weight:600;font-size:.85rem">GL (si aplica)</label><input type="number" id="dist-df" class="form-control" value="30" min="1"></div></div><button class="btn btn-primary" style="width:100%;margin-top:1rem" onclick="calcDistribution()">Calcular</button><div id="dist-results" style="margin-top:1rem"></div>` },
+        'tool-distributions': { title: 'Distribuciones Estadísticas', html: `<h3>Calculadora de Distribuciones</h3><div style="margin:1rem 0"><label style="font-weight:600;font-size:.85rem">Distribución</label><select id="dist-type" class="form-control"><option value="normal">Normal (Z)</option><option value="t">t-Student</option><option value="chi2">Chi-cuadrado</option></select></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem"><div><label style="font-weight:600;font-size:.85rem">Valor</label><input type="number" id="dist-value" class="form-control" value="1.96" step="0.01"></div><div><label style="font-weight:600;font-size:.85rem">GL (si aplica)</label><input type="number" id="dist-df" class="form-control" value="30" min="1"></div></div><button class="btn btn-primary" style="width:100%;margin-top:1rem" onclick="calcDistribution()">Calcular</button><canvas id="dist-canvas" width="400" height="200" style="width:100%;height:auto;margin-top:1.5rem;background:transparent;display:none;"></canvas><div id="dist-results" style="margin-top:1rem"></div>` },
         'tool-references': { title: 'Cheat Sheets', html: `<h3>Guías Rápidas de Software</h3><div class="tabs" style="margin:1.5rem 0"><button class="tab-btn active" onclick="showCheat('r')">R</button><button class="tab-btn" onclick="showCheat('stata')">Stata</button><button class="tab-btn" onclick="showCheat('python')">Python</button></div><div id="cheat-content" style="background:var(--primary);color:#e2e8f0;padding:1.5rem;border-radius:var(--radius-sm);font-family:'JetBrains Mono',monospace;font-size:.82rem;white-space:pre-wrap;max-height:400px;overflow-y:auto"></div>` },
         'tool-concepts': { title: 'Glosario Económico', html: `<h3>Conceptos Clave</h3><input type="text" id="glossary-search" class="form-control" placeholder="Buscar concepto..." style="margin:1rem 0" oninput="filterGlossary()"><div id="glossary-list" style="max-height:400px;overflow-y:auto"></div>` },
         'tool-hypothesis': { title: 'Pruebas de Hipótesis', html: `<h3>Calculadora de Pruebas</h3><div style="margin:1rem 0"><label style="font-weight:600;font-size:.85rem">Tipo de Prueba</label><select id="hyp-type" class="form-control"><option value="z">Prueba Z (proporciones)</option><option value="t1">Prueba t (una muestra)</option><option value="t2">Prueba t (dos muestras)</option></select></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem"><div><label style="font-weight:600;font-size:.85rem">Estadístico</label><input type="number" id="hyp-stat" class="form-control" value="2.1" step="0.01"></div><div><label style="font-weight:600;font-size:.85rem">Nivel de Significancia</label><select id="hyp-alpha" class="form-control"><option value="0.01">1%</option><option value="0.05" selected>5%</option><option value="0.10">10%</option></select></div></div><button class="btn btn-primary" style="width:100%;margin-top:1rem" onclick="testHypothesis()">Evaluar</button><div id="hyp-results" style="margin-top:1rem"></div>` },
@@ -923,6 +923,7 @@ function calcDistribution() {
     const val = parseFloat(document.getElementById('dist-value').value);
     const df = parseInt(document.getElementById('dist-df').value);
     let result = '';
+    const canvas = document.getElementById('dist-canvas');
     if (type === 'normal') {
         // Approx normal CDF
         const t = 1 / (1 + 0.2316419 * Math.abs(val));
@@ -931,7 +932,63 @@ function calcDistribution() {
         const cdf = val >= 0 ? 1 - p : p;
         const pValue2 = 2 * (1 - cdf);
         result = `<p><strong>Z = ${val}</strong></p><p>P(Z ≤ ${val}) = ${cdf.toFixed(6)}</p><p>p-value (dos colas) = ${(pValue2 < 0 ? 0 : pValue2).toFixed(6)}</p><p>${pValue2 < 0.05 ? '✅ Significativo al 5%' : '❌ No significativo al 5%'}</p>`;
+        
+        // Draw Distribution on Canvas
+        canvas.style.display = 'block';
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const w = canvas.width, h = canvas.height;
+        const yAxis = h - 25;
+        
+        // Base line
+        ctx.beginPath();
+        ctx.moveTo(0, yAxis);
+        ctx.lineTo(w, yAxis);
+        ctx.strokeStyle = '#ccc';
+        ctx.stroke();
+
+        // Shaded area
+        ctx.beginPath();
+        ctx.moveTo(0, yAxis);
+        for(let x=-4; x<=Math.min(val, 4); x+=0.05) {
+            const py = 0.3989422804 * Math.exp(-x * x / 2);
+            ctx.lineTo((x + 4) / 8 * w, yAxis - (py * h * 1.8));
+        }
+        const endX = (Math.min(val, 4) + 4) / 8 * w;
+        ctx.lineTo(endX, yAxis);
+        ctx.fillStyle = 'rgba(201, 162, 39, 0.4)';
+        ctx.fill();
+
+        // Bell curve
+        ctx.beginPath();
+        for(let x=-4; x<=4; x+=0.05) {
+            const py = 0.3989422804 * Math.exp(-x * x / 2);
+            const cx = (x + 4) / 8 * w;
+            const cy = yAxis - (py * h * 1.8);
+            if(x === -4) ctx.moveTo(cx, cy);
+            else ctx.lineTo(cx, cy);
+        }
+        ctx.strokeStyle = '#c9a227';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        // Value marker
+        ctx.beginPath();
+        ctx.moveTo(endX, yAxis);
+        ctx.lineTo(endX, yAxis - (0.3989422804 * Math.exp(-Math.min(val, 4)**2 / 2) * h * 1.8));
+        ctx.strokeStyle = '#1e293b';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        // Label
+        ctx.fillStyle = '#1e293b';
+        ctx.font = '14px Inter';
+        ctx.textAlign = 'center';
+        ctx.fillText(val.toFixed(2), endX, h - 5);
+        ctx.fillText('0', w/2, h - 5);
+
     } else {
+        canvas.style.display = 'none';
         result = `<p>Valor: ${val}, GL: ${df}</p><p style="color:var(--text-gray)">Para t-Student y Chi² con tablas exactas, usa R: <code>pt(${val}, ${df})</code> o <code>pchisq(${val}, ${df})</code></p>`;
     }
     document.getElementById('dist-results').innerHTML = `<div style="background:var(--bg-offset);padding:1.2rem;border-radius:var(--radius-sm)">${result}</div>`;
