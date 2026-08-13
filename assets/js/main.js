@@ -975,7 +975,7 @@ function calcDistribution() {
         // Value marker
         ctx.beginPath();
         ctx.moveTo(endX, yAxis);
-        ctx.lineTo(endX, yAxis - (0.3989422804 * Math.exp(-Math.min(val, 4)**2 / 2) * h * 1.8));
+        ctx.lineTo(endX, yAxis - (0.3989422804 * Math.exp(-(Math.min(val, 4) * Math.min(val, 4)) / 2) * h * 1.8));
         ctx.strokeStyle = '#1e293b';
         ctx.lineWidth = 2;
         ctx.stroke();
